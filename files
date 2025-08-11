@@ -1,0 +1,41 @@
+// app/layout.tsx
+export const metadata: Metadata = {
+title: 'Fanslink',
+description: 'Fanslink — Repurpose once. Publish everywhere.',
+}
+
+// components/site-header.tsx
+<Link href="/" className="flex items..." aria-label="Fanslink Home">
+<Image src="/fanslink-logo.png" alt="Fanslink" />
+<PillButton size="sm" className="min-w-[140px]">
+Get Fanslink
+</PillButton>
+
+// app/page.tsx
+<PillButton size="sm" className="min-w-[140px]">
+Get Fanslink
+</PillButton>
+
+// components/repurpose-bot.tsx
+<span className="text-white">Meet Fanslink </span>
+
+// components/why-choose-us.tsx
+<span>{"Fanslink"}</span>
+<p>If Fanslink doesn’t cut your repurposing time by half within 7 days, we’ll help you set it up — free.</p>
+
+// components/faq.tsx
+<h2>Everything you need to know about repurposing with Fanslink.</h2>
+<p>Yes. Set your brand kit once and Fanslink applies it to every export: fonts, colors, safe areas,</p>
+
+// components/site-footer.tsx
+<Image src="/fanslink-logo.png" alt="Fanslink" />
+<p>Repurpose once. Publish everywhere. Grow faster with Fanslink.</p>
+<p>© {new Date().getFullYear()} Fanslink. All rights reserved.</p>
+
+// components/cta-band.tsx
+<PillButton size="sm" className="min-w-[140px]">
+Get Fanslink
+</PillButton>
+
+// components/bento-grid.tsx
+<h2>What you get with Fanslink</h2>

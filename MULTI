@@ -1,0 +1,46 @@
+// app/page.tsx
+import React from "react";
+import PillButton from "@/components/pill-button";
+
+const Page = () => {
+  return (
+    <div>
+      {/* Header and other content here */}
+      <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <PillButton>
+          Get TikFusion
+        </PillButton>
+        <PillButton className="opacity-90 hover:opacity-100">
+          Ultimate TikTok & IG Guide
+        </PillButton>
+      </div>
+      {/* Footer and other content here */}
+    </div>
+  );
+};
+
+export default Page;
+
+// components/site-header.tsx
+import React from "react";
+import PillButton from "@/components/pill-button";
+
+const SiteHeader = () => {
+  return (
+    <header>
+      {/* Logo and other desktop content here */}
+      <div className="hidden items-center gap-3 md:flex">
+        <PillButton size="sm">Account</PillButton>
+        <PillButton size="sm">Get TikFusion</PillButton>
+      </div>
+      {/* Mobile sheet content here */}
+      <div className="mt-2 grid grid-cols-2 gap-2">
+        <PillButton size="md">Get TikFusion</PillButton>
+        <PillButton size="md">Account</PillButton>
+      </div>
+      {/* Other mobile content here */}
+    </header>
+  );
+};
+
+export default SiteHeader;

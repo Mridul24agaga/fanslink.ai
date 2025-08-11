@@ -1,0 +1,192 @@
+import type React from "react"
+import { Scissors, Sparkles, Gauge, UploadCloud, PlayCircle, Layers } from "lucide-react"
+import Image from "next/image"
+import { cn } from "@/lib/utils"
+
+export default function BentoShowcaseSection() {
+  return (
+    <section aria-labelledby="showcase" className="relative snap-start py-10 md:py-14">
+      <div className="container mx-auto max-w-6xl px-4">
+        <header className="mb-8 max-w-3xl md:mb-10">
+          <div className="text-[10px] uppercase tracking-[0.14em] text-zinc-400">[ features ]</div>
+          <h2 id="showcase" className="mt-2 text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
+            What you get with Fanslink
+          </h2>
+          
+        </header>
+
+        {/* Bento Grid */}
+        <div
+          className={cn(
+            "grid gap-3 md:gap-4",
+            // 6 columns on md+; cards define their spans
+            "md:grid-cols-6",
+          )}
+          // make rows auto size nicely
+          style={{ gridAutoRows: "minmax(120px, auto)" }}
+        >
+          {/* Big primary card */}
+          <BentoCard className="md:col-span-4 md:row-span-2">
+            <div className="flex h-full flex-col justify-between">
+              <div className="flex items-center gap-2">
+                <Badge icon={<Scissors className="h-4 w-4" />}>Auto‑clip detection</Badge>
+                <Badge icon={<Sparkles className="h-4 w-4" />}>Smart captions</Badge>
+              </div>
+              <div className="mt-3 grid grid-cols-1 items-center gap-4 md:grid-cols-2">
+                <div className="rounded-lg border border-white/10 bg-black/30 p-3 font-mono text-sm text-zinc-200">
+                  <ConsoleLine>{"> Upload: product-launch.mp4"}</ConsoleLine>
+                  <ConsoleLine>{"• Detecting chapters… ✓"}</ConsoleLine>
+                  <ConsoleLine>{"• Finding highlight peaks… 14 clips"}</ConsoleLine>
+                  <ConsoleLine>{"• Applying brand captions… ✓"}</ConsoleLine>
+                  <ConsoleLine>{"• Resizing for 9:16 / 1:1 / 16:9… ✓"}</ConsoleLine>
+                </div>
+                <div className="relative overflow-hidden rounded-lg border border-white/10">
+                  <Image
+                    src="/tikfusion-clips-timeline.png"
+                    alt="Clips timeline preview"
+                    width={640}
+                    height={420}
+                    className="h-full w-full object-cover"
+                    priority
+                  />
+                  {/* soft overlay label */}
+                  <div className="pointer-events-none absolute left-3 top-3 rounded-full border border-white/15 bg-white/10 px-2 py-1 text-xs text-white/90">
+                    Highlights
+                  </div>
+                </div>
+              </div>
+            </div>
+          </BentoCard>
+
+          {/* Tall stats card */}
+          <BentoCard className="md:col-span-2 md:row-span-2">
+            <div className="flex h-full flex-col justify-between">
+              <div className="flex items-center gap-2">
+                <Badge icon={<Gauge className="h-4 w-4" />}>Speed</Badge>
+              </div>
+              <div className="mt-2">
+                <div className="text-5xl font-extrabold leading-none">5 sec</div>
+                <p className="mt-2 text-sm text-zinc-400">Average analysis time</p>
+              </div>
+              <div className="mt-6 grid grid-cols-3 gap-2 text-center">
+                <MiniStat label="Exports" value="99.9%" />
+                <MiniStat label="Clips/run" value="10‑20" />
+                <MiniStat label="Save time" value="3×" />
+              </div>
+            </div>
+          </BentoCard>
+
+          {/* Formats card */}
+          <BentoCard className="md:col-span-2 md:row-span-1">
+            <div className="flex h-full items-center justify-between gap-3">
+              <div>
+                <div className="flex items-center gap-2">
+                  <Badge icon={<Layers className="h-4 w-4" />}>Formats</Badge>
+                </div>
+                <p className="mt-2 text-sm text-zinc-300">Auto‑resize to every platform</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <FormatPill>9:16</FormatPill>
+                <FormatPill>1:1</FormatPill>
+                <FormatPill>16:9</FormatPill>
+              </div>
+            </div>
+          </BentoCard>
+
+          {/* Preview video card */}
+          <BentoCard className="md:col-span-2 md:row-span-1">
+            <div className="flex h-full items-center justify-between gap-3">
+              <div>
+                <div className="flex items-center gap-2">
+                  <Badge icon={<PlayCircle className="h-4 w-4" />}>Preview</Badge>
+                </div>
+                <p className="mt-2 text-sm text-zinc-300">Check pacing and captions instantly</p>
+              </div>
+              <div className="relative h-16 w-28 overflow-hidden rounded-md border border-white/10">
+                <Image
+                  src="/short-video-preview.png"
+                  alt="Clip preview"
+                  width={200}
+                  height={120}
+                  className="h-full w-full object-cover"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+              </div>
+            </div>
+          </BentoCard>
+
+          {/* Publish card */}
+          <BentoCard className="md:col-span-2 md:row-span-1">
+            <div className="flex h-full items-center justify-between gap-3">
+              <div>
+                <div className="flex items-center gap-2">
+                  <Badge icon={<UploadCloud className="h-4 w-4" />}>Publish</Badge>
+                </div>
+                <p className="mt-2 text-sm text-zinc-300">Queue to TikTok, IG Reels, Shorts</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <PlatformDot label="TT" />
+                <PlatformDot label="IG" />
+                <PlatformDot label="YT" />
+              </div>
+            </div>
+          </BentoCard>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function BentoCard({ className, children }: { className?: string; children: React.ReactNode }) {
+  return (
+    <div
+      className={cn(
+        "group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-4 backdrop-blur",
+        "transition-all hover:translate-y-[-2px] hover:bg-white/[0.06]",
+        className,
+      )}
+    >
+      {/* subtle corner glows */}
+      <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[radial-gradient(closest-side,rgba(123,97,255,0.22),transparent)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      {children}
+    </div>
+  )
+}
+
+function Badge({ icon, children }: { icon: React.ReactNode; children: React.ReactNode }) {
+  return (
+    <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs text-white/90">
+      <span className="text-white/90">{icon}</span>
+      {children}
+    </span>
+  )
+}
+
+function ConsoleLine({ children }: { children: React.ReactNode }) {
+  return <div className="py-0.5">{children}</div>
+}
+
+function MiniStat({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="rounded-lg border border-white/10 bg-black/30 p-3">
+      <div className="text-lg font-semibold">{value}</div>
+      <div className="mt-0.5 text-[11px] uppercase tracking-wide text-zinc-400">{label}</div>
+    </div>
+  )
+}
+
+function FormatPill({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="inline-flex items-center rounded-full border border-white/15 bg-white/10 px-2 py-1 text-xs text-white/90">
+      {children}
+    </span>
+  )
+}
+
+function PlatformDot({ label }: { label: string }) {
+  return (
+    <span className="inline-flex h-8 min-w-8 items-center justify-center rounded-full border border-white/15 bg-white/10 px-2 text-xs font-semibold">
+      {label}
+    </span>
+  )
+}
