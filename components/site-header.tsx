@@ -20,7 +20,7 @@ export default function SiteHeader() {
   // Keep header appearance constant while scrolling
 
   return (
-    <header className="relative z-50 w-full h-16">
+    <header className="fixed top-0 z-50 w-full pointer-events-none h-16">
       {/* Animated shell that morphs between full-width bar and compact floating pill */}
       <div
         className={[
@@ -28,6 +28,7 @@ export default function SiteHeader() {
           "mx-auto max-w-none rounded-none",
           "bg-[#000319]/85 backdrop-blur supports-[backdrop-filter]:bg-[#000319]/75",
         ].join(" ")}
+        style={{ pointerEvents: "auto" }}
       >
         <div
           className={[
