@@ -3,10 +3,11 @@
 import React from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Menu } from "lucide-react"
+import { Menu, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import PillButton from "@/components/pill-button"
+import RainbowBorder from "@/components/rainbow-border"
 
 const links = [
   { label: "Products", href: "#" },
@@ -16,41 +17,22 @@ const links = [
 ]
 
 export default function SiteHeader() {
-  const [scrolled, setScrolled] = React.useState(false)
-
-  React.useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
-    onScroll()
-    window.addEventListener("scroll", onScroll, { passive: true })
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
+  // Keep header appearance constant while scrolling
 
   return (
-    <header className="sticky top-0 z-50 w-full pointer-events-none h-16">
+    <header className="relative z-50 w-full h-16">
       {/* Animated shell that morphs between full-width bar and compact floating pill */}
       <div
         className={[
-          // base transition
           "transition-all duration-300 ease-out",
-          // layout and position
-          scrolled
-            ? "fixed left-0 right-0 top-2 z-[60] mx-auto max-w-6xl rounded-2xl"
-            : "mx-auto max-w-none rounded-none",
-          // borders and shadows
-          scrolled
-            ? "border border-white/12 shadow-[0_8px_28px_-12px_rgba(123,97,255,0.35)]"
-            : "",
-          // backgrounds and blur
-          scrolled
-            ? "bg-[#0b1230]/80 backdrop-blur supports-[backdrop-filter]:bg-[#0b1230]/65"
-            : "bg-[#000319]/85 backdrop-blur supports-[backdrop-filter]:bg-[#000319]/75",
+          "mx-auto max-w-none rounded-none",
+          "bg-[#000319]/85 backdrop-blur supports-[backdrop-filter]:bg-[#000319]/75",
         ].join(" ")}
-        style={{ pointerEvents: "auto" }}
       >
         <div
           className={[
             "container mx-auto flex items-center justify-between transition-all duration-300",
-            scrolled ? "h-14 px-4" : "h-16 px-4",
+            "h-16 px-4",
           ].join(" ")}
         >
           {/* Brand */}
@@ -61,7 +43,7 @@ export default function SiteHeader() {
               width={200}
               height={50}
               priority
-              className={["transition-all duration-300", scrolled ? "h-9 w-auto" : "h-9 w-auto"].join(" ")}
+              className={["transition-all duration-300", "h-9 w-auto"].join(" ")}
             />
           </Link>
 
@@ -76,9 +58,14 @@ export default function SiteHeader() {
 
           {/* Desktop CTA */}
           <div className="hidden items-center gap-3 md:flex">
-            <PillButton size="sm" className="min-w-[140px]">
-              Get Fanslink
-            </PillButton>
+            <RainbowBorder>
+              <PillButton size="sm" className="border-transparent group whitespace-nowrap">
+                <span className="inline-flex items-center">
+                  Get Fanslink Now
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                </span>
+              </PillButton>
+            </RainbowBorder>
           </div>
 
           {/* Mobile menu */}
@@ -102,7 +89,14 @@ export default function SiteHeader() {
                     </MobileLink>
                   ))}
                   <div className="mt-4 grid grid-cols-1 gap-2">
-                    <PillButton size="md">Get TikFusion</PillButton>
+                    <RainbowBorder>
+                      <PillButton size="md" className="border-transparent group whitespace-nowrap w-full justify-center">
+                        <span className="inline-flex items-center">
+                          Get Fanslink Now
+                          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                        </span>
+                      </PillButton>
+                    </RainbowBorder>
                   </div>
                 </div>
               </SheetContent>

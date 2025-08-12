@@ -15,29 +15,29 @@ export default function BrandsTrustSection() {
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <Card
             tag="[ PROVEN RESULTS ]"
-            titlePrimary="200+ businesses"
-            titleSecondary="automated"
+            titlePrimary="Manual repurposing is"
+            titleSecondary="over"
             imgSrc="https://framerusercontent.com/images/4tBBTStYBI6viIm3S0V32LWmEsE.png?scale-down-to=512"
             imgAlt="Cube illustration"
           />
           <Card
             tag="[ SEAMLESS AI INTEGRATION ]"
-            titlePrimary="Works with your"
-            titleSecondary="existing tools"
+            titlePrimary="73+ hours saved"
+            titleSecondary="per week"
             imgSrc="https://framerusercontent.com/images/wuAQkitFA7FROtqnxuSNB3IjY.png?scale-down-to=512"
             imgAlt="Puzzle illustration"
           />
           <Card
             tag="[ TAILORED FOR YOU ]"
-            titlePrimary="Custom AI"
-            titleSecondary="solutions"
+            titlePrimary="High quality"
+            titleSecondary="results"
             imgSrc="https://framerusercontent.com/images/0inQJKilj8qkeUgN4bqX6KsU5rU.png?scale-down-to=512"
             imgAlt="Chip illustration"
           />
           <Card
             tag="[ ONGOING SUPPORT ]"
-            titlePrimary="We ensure your"
-            titleSecondary="AI runs smoothly"
+            titlePrimary="High rated"
+            titleSecondary="support team"
             imgSrc="https://framerusercontent.com/images/dIX4pjdxAyXF48AZQtOmL0xk.png?scale-down-to=512"
             imgAlt="Chat bubble illustration"
           />

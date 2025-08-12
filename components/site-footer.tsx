@@ -10,7 +10,7 @@ export default function SiteFooter() {
         {/* Brand + blurb + socials */}
         <div className="flex flex-col gap-3">
           <Link href="/" className="inline-flex items-center gap-2">
-            <Image src="/images/fanslink-logo.png" alt="TikFusion" width={160} height={40} className="h-7 w-auto" />
+            <Image src="/images/fanslink-logo.png" alt="TikFusion" width={220} height={60} className="h-10 w-auto" />
           </Link>
           <p className="max-w-xs text-sm text-zinc-400">
             Repurpose once. Publish everywhere. Grow faster with TikFusion.
@@ -39,15 +39,19 @@ export default function SiteFooter() {
         >
           <div className="space-y-2">
             <p className="font-semibold text-white">Product</p>
-            <FooterLink href="#pricing">Pricing</FooterLink>
-            <FooterLink href="#">Templates</FooterLink>
-            <FooterLink href="#team">Our Team</FooterLink>
+            <ul className="space-y-1">
+              <li><FooterLink href="#pricing">Pricing</FooterLink></li>
+              <li><FooterLink href="#">Templates</FooterLink></li>
+              <li><FooterLink href="#team">Our Team</FooterLink></li>
+            </ul>
           </div>
           <div className="space-y-2">
             <p className="font-semibold text-white">Company</p>
-            <FooterLink href="#faq">FAQ</FooterLink>
-            <FooterLink href="#">Affiliate</FooterLink>
-            <FooterLink href="mailto:hey@tikfusion.app">Contact</FooterLink>
+            <ul className="space-y-1">
+              <li><FooterLink href="#faq">FAQ</FooterLink></li>
+              <li><FooterLink href="#">Affiliate</FooterLink></li>
+              <li><FooterLink href="mailto:hey@tikfusion.app">Contact</FooterLink></li>
+            </ul>
           </div>
         </nav>
       </div>
@@ -77,7 +81,7 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
   return (
     <Link
       href={href}
-      className="text-zinc-400 transition-colors hover:text-white focus:outline-none focus-visible:rounded focus-visible:ring-2 focus-visible:ring-white/30"
+      className="block text-zinc-400 transition-colors hover:text-white focus:outline-none focus-visible:rounded focus-visible:ring-2 focus-visible:ring-white/30"
     >
       {children}
     </Link>

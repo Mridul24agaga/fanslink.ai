@@ -7,7 +7,6 @@ import BentoShowcaseSection from "@/components/bento-grid"
 import Hero from "@/components/hero"
 import TeamSection from "@/components/team"
 import BrandsTrustSection from "@/components/brands-trust"
-import TestimonialsSection from "@/components/testimonials"
 import ContactUsSection from "@/components/contact-us"
 import PricingSection from "@/components/pricing"
 
@@ -41,10 +40,7 @@ export default function Page() {
 
 
 
-        {/* Testimonials */}
-        <div data-reveal>
-          <TestimonialsSection />
-        </div>
+        {/* Testimonials hidden for now */}
 
         {/* Team */}
         <div data-reveal>

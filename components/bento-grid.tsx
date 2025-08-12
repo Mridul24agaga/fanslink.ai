@@ -1,3 +1,5 @@
+"use client"
+
 import type React from "react"
 import { Scissors, Sparkles, Gauge, UploadCloud, PlayCircle, Layers } from "lucide-react"
 import Image from "next/image"
@@ -29,8 +31,8 @@ export default function BentoShowcaseSection() {
           <BentoCard className="md:col-span-4 md:row-span-2">
             <div className="flex h-full flex-col justify-between">
               <div className="flex items-center gap-2">
-                <Badge icon={<Scissors className="h-4 w-4" />}>Auto‑clip detection</Badge>
-                <Badge icon={<Sparkles className="h-4 w-4" />}>Smart captions</Badge>
+                <Badge icon={<Scissors className="h-4 w-4" />}>Metadata Repurpose</Badge>
+                <Badge icon={<Sparkles className="h-4 w-4" />}>Custom Export Settings</Badge>
               </div>
               <div className="mt-3 grid grid-cols-1 items-center gap-4 md:grid-cols-2">
                 <div className="rounded-lg border border-white/10 bg-black/30 p-3 font-mono text-sm text-zinc-200">
@@ -100,7 +102,7 @@ export default function BentoShowcaseSection() {
                 <div className="flex items-center gap-2">
                   <Badge icon={<PlayCircle className="h-4 w-4" />}>Preview</Badge>
                 </div>
-                <p className="mt-2 text-sm text-zinc-300">Check pacing and captions instantly</p>
+                <p className="mt-2 text-sm text-zinc-300">Generate 100+ repurposed reels in one click</p>
               </div>
               <div className="relative h-16 w-28 overflow-hidden rounded-md border border-white/10">
                 <Image
@@ -122,10 +124,9 @@ export default function BentoShowcaseSection() {
                 <div className="flex items-center gap-2">
                   <Badge icon={<UploadCloud className="h-4 w-4" />}>Publish</Badge>
                 </div>
-                <p className="mt-2 text-sm text-zinc-300">Queue to TikTok, IG Reels, Shorts</p>
+                <p className="mt-2 text-sm text-zinc-300">Publish to IG Reels, Shorts (including trial reels)</p>
               </div>
               <div className="flex items-center gap-2">
-                <PlatformDot label="TT" />
                 <PlatformDot label="IG" />
                 <PlatformDot label="YT" />
               </div>
@@ -141,14 +142,32 @@ function BentoCard({ className, children }: { className?: string; children: Reac
   return (
     <div
       className={cn(
-        "group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-4 backdrop-blur",
-        "transition-all hover:translate-y-[-2px] hover:bg-white/[0.06]",
+        "group relative overflow-hidden rounded-2xl border border-white/20 bg-white/[0.06] p-4",
+        "backdrop-blur-xl backdrop-saturate-150",
+        "shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_15px_40px_-20px_rgba(0,0,0,0.45)]",
+        "transition-all hover:translate-y-[-2px] hover:bg-white/[0.08]",
         className,
       )}
     >
+      {/* glass sheen overlay */}
+      <div
+        className="pointer-events-none absolute inset-0 z-0 rounded-[inherit] bg-[linear-gradient(125deg,rgba(255,255,255,0.18),rgba(255,255,255,0.08)_40%,transparent_65%)] opacity-80 [mask-image:linear-gradient(to_bottom,white,transparent_70%)]"
+        aria-hidden
+      />
+      {/* subtle top/bottom edge highlights */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-white/35 via-white/15 to-transparent opacity-90" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-black/30 to-black/40" />
       {/* subtle corner glows */}
-      <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[radial-gradient(closest-side,rgba(123,97,255,0.22),transparent)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-      {children}
+      <div className="pointer-events-none absolute -right-10 -top-10 z-0 h-32 w-32 rounded-full bg-[radial-gradient(closest-side,rgba(123,97,255,0.18),transparent)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      {/* fine noise for realistic glass */}
+      <div className="glass-noise pointer-events-none absolute inset-0 z-0 rounded-[inherit] opacity-20 mix-blend-overlay" />
+      <div className="relative z-10">{children}</div>
+      <style jsx>{`
+        .glass-noise {
+          background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 140 140"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#n)" opacity="0.18"/></svg>');
+          background-size: 180px 180px;
+        }
+      `}</style>
     </div>
   )
 }

@@ -5,7 +5,7 @@ import PillButton from "@/components/pill-button"
 import { Check } from "lucide-react"
 import { useState } from "react"
 
-const basicIcon = "https://framerusercontent.com/images/iryXuFlc5kEuEPs9HnVhfWAkwWk.png?scale-down-to=512"
+const basicIcon = "/images/fanslink-logo.png"
 const growthIcon = "https://framerusercontent.com/images/zyzNVSLRKdxilXqP9QMmuTY2E.png?scale-down-to=512"
 
 export default function PricingSection() {
@@ -67,35 +67,35 @@ export default function PricingSection() {
         <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
           <PriceCard
             tone="subtle"
-            planLabel="Basic"
-            monthlyPrice={99}
+            planLabel="Repurpose Bot"
+            monthlyPrice={149}
+            yearlyPrice={1200}
+            billing={billing}
             subtitleTop="Perfect for"
             subtitleBottom="Small businesses"
-            ctaLabel="Choose Basic"
+            ctaLabel="Choose Repurpose Bot"
             iconUrl={basicIcon}
             features={[
-              "AI chatbot for customer inquiries",
-              "Basic workflow automation (email, CRM, data entry)",
-              "AI‑powered analytics dashboard",
-              "24/7 support via email",
+              "Perfect for all agencies",
+              "Fast content repurposing",
+              "Face swap videos and images",
+              "Content similarity detection",
+              "Highly rated support team",
+              "Convert and compress files",
             ]}
           />
 
           <PriceCard
             tone="highlight"
-            planLabel="Growth"
-            monthlyPrice={299}
-            subtitleTop="Perfect for"
-            subtitleBottom="Growing teams"
-            ctaLabel="Choose Growth"
+            planLabel="Coming soon"
+            monthlyPrice={0}
+            billing={billing}
+            subtitleTop=""
+            subtitleBottom="7+ tools"
+            ctaLabel="Coming Soon"
             iconUrl={growthIcon}
-            features={[
-              "Everything in Starter Plan",
-              "Advanced AI chatbots with custom responses",
-              "AI‑driven lead qualification & follow‑up",
-              "Automated reporting & insights",
-              "Priority customer support",
-            ]}
+            comingSoon
+            features={["7+ tools"]}
           />
         </div>
       </div>
@@ -107,22 +107,31 @@ function PriceCard({
   tone,
   planLabel,
   monthlyPrice,
+  yearlyPrice,
+  billing,
   subtitleTop,
   subtitleBottom,
   ctaLabel,
   iconUrl,
   features,
+  comingSoon,
 }: {
   tone: "subtle" | "highlight"
   planLabel: string
   monthlyPrice: number
+  yearlyPrice?: number
+  billing?: "monthly" | "yearly"
   subtitleTop: string
   subtitleBottom: string
   ctaLabel: string
   iconUrl: string
   features: string[]
+  comingSoon?: boolean
 }) {
   const isHighlight = tone === "highlight"
+  const isYearly = billing === "yearly"
+  const displayPrice = isYearly && yearlyPrice ? yearlyPrice : monthlyPrice
+  const priceSuffix = isYearly ? "/year" : "/month"
 
   return (
     <div
@@ -136,18 +145,24 @@ function PriceCard({
       <img
         src={iconUrl}
         alt="decorative"
-        className="pointer-events-none absolute -right-3 -top-3 w-24 opacity-60 sm:w-28"
+        className="pointer-events-none absolute right-4 top-4 h-10 w-auto object-contain opacity-90 sm:h-12 z-10"
         loading="lazy"
       />
 
       {/* plan label */}
       <div className="text-sm font-semibold text-zinc-300">{planLabel}</div>
 
-      {/* price */}
-      <div className="mt-3 flex items-end gap-2">
-        <div className="text-4xl font-extrabold sm:text-5xl md:text-6xl">${monthlyPrice}</div>
-        <div className="mb-2 text-xs uppercase tracking-wide text-zinc-400">/month</div>
-      </div>
+      {/* price or coming soon */}
+      {comingSoon ? (
+        <div className="mt-3 flex items-end gap-2">
+          <div className="text-3xl font-extrabold sm:text-4xl md:text-5xl">Coming soon</div>
+        </div>
+      ) : (
+        <div className="mt-3 flex items-end gap-2">
+          <div className="text-4xl font-extrabold sm:text-5xl md:text-6xl">${displayPrice}</div>
+          <div className="mb-2 text-xs uppercase tracking-wide text-zinc-400">{priceSuffix}</div>
+        </div>
+      )}
 
       {/* subtitle */}
       <p className="mt-4 text-sm text-zinc-400">{subtitleTop}</p>
@@ -158,16 +173,21 @@ function PriceCard({
         {isHighlight ? (
           <PillButton
             aria-label={`Select ${planLabel} plan`}
-            className="w-full justify-start border border-white/20 bg-[linear-gradient(90deg,#6d5dfc_0%,#7b61ff_60%,#7b61ff_100%)] ring-1 ring-white/30 shadow-[0_20px_48px_-16px_rgba(123,97,255,0.55)] hover:brightness-110"
+            className={[
+              "w-full justify-start border border-white/20 bg-[linear-gradient(90deg,#6d5dfc_0%,#7b61ff_60%,#7b61ff_100%)] ring-1 ring-white/30 shadow-[0_20px_48px_-16px_rgba(123,97,255,0.55)]",
+              comingSoon ? "opacity-60 pointer-events-none" : "hover:brightness-110",
+            ].join(" ")}
             size="lg"
+            disabled={!!comingSoon}
           >
             {ctaLabel}
           </PillButton>
         ) : (
           <PillButton
             aria-label={`Select ${planLabel} plan`}
-            className="w-full justify-start bg-white/10 hover:bg-white/15 border-white/15 text-white/90"
+            className={["w-full justify-start bg-white/10 border-white/15 text-white/90", comingSoon ? "opacity-60 pointer-events-none" : "hover:bg-white/15"].join(" ")}
             size="lg"
+            disabled={!!comingSoon}
           >
             {ctaLabel}
           </PillButton>

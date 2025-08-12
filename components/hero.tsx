@@ -2,16 +2,12 @@
 
 import PillButton from "@/components/pill-button"
 import RainbowBorder from "@/components/rainbow-border"
-import { ArrowRight, Star } from "lucide-react"
+import { ArrowRight, Star, Users } from "lucide-react"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
-import Spotlight from "@/components/spotlight"
 
 export default function Hero() {
   return (
     <section className="relative snap-start min-h-[calc(100vh-4rem)] flex items-center">
-      {/* Spotlight background */}
-      <Spotlight />
-
       <div className="container relative z-10 mx-auto px-4">
         <div className="mx-auto max-w-6xl text-center">
           {/* Badge */}
@@ -62,38 +58,10 @@ export default function Hero() {
 
           {/* Trusted by row */}
           <div className="fl-hero-appear mt-7 flex flex-col items-center justify-center gap-3 text-sm text-zinc-400 sm:flex-row" style={{ animationDelay: "400ms" }}>
-            <div className="flex items-center">
-              <div className="first:ml-0 -ml-2 px-[2px] rounded-full bg-gradient-to-br from-amber-300/40 via-indigo-400/40 to-transparent">
-                <Avatar className="size-9 bg-black/30 ring-1 ring-white/10 shadow-sm">
-                  <AvatarImage src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=96&q=80&auto=format&fit=crop&crop=faces" alt="Maya, creator" />
-                  <AvatarFallback>MY</AvatarFallback>
-                </Avatar>
-              </div>
-              <div className="-ml-2 px-[2px] rounded-full bg-gradient-to-br from-amber-300/40 via-indigo-400/40 to-transparent">
-                <Avatar className="size-9 bg-black/30 ring-1 ring-white/10 shadow-sm">
-                  <AvatarImage src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?w=96&q=80&auto=format&fit=crop&crop=faces" alt="Luis, creator" />
-                  <AvatarFallback>LS</AvatarFallback>
-                </Avatar>
-              </div>
-              <div className="-ml-2 px-[2px] rounded-full bg-gradient-to-br from-amber-300/40 via-indigo-400/40 to-transparent">
-                <Avatar className="size-9 bg-black/30 ring-1 ring-white/10 shadow-sm">
-                  <AvatarImage src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?w=96&q=80&auto=format&fit=crop&crop=faces" alt="Avery, creator" />
-                  <AvatarFallback>AV</AvatarFallback>
-                </Avatar>
-              </div>
-              <div className="-ml-2 px-[2px] rounded-full bg-gradient-to-br from-amber-300/40 via-indigo-400/40 to-transparent">
-                <Avatar className="size-9 bg-black/30 ring-1 ring-white/10 shadow-sm">
-                  <AvatarImage src="https://images.unsplash.com/photo-1545996124-0501ebae84d0?w=96&q=80&auto=format&fit=crop&crop=faces" alt="Sam, creator" />
-                  <AvatarFallback>SM</AvatarFallback>
-                </Avatar>
-              </div>
-              <div className="-ml-2 flex size-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-[11px] text-white/80">
-                +1k
-              </div>
-            </div>
+            {/* avatars removed */}
 
             <div className="flex items-center gap-3">
-              <span className="text-white/90">Trusted by 1,200+ creators</span>
+              <span className="text-white/90">Trusted by top agencies and creators</span>
               <span className="hidden h-4 w-px bg-white/10 sm:inline-block" />
               <span className="inline-flex items-center gap-1 text-zinc-300">
                 <Star className="h-4 w-4 text-amber-300" fill="currentColor" />

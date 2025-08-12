@@ -13,6 +13,10 @@ interface StackScrollerProps {
   // shift the whole column's timing 0-1
   shift?: number
   className?: string
+  // animation mode
+  mode?: "stack" | "sequentialLeft"
+  // spacing between items in sequential mode
+  spacing?: number
 }
 
 /**
@@ -28,6 +32,8 @@ export default function StackScroller({
   stagger = 0.14,
   shift = 0,
   className,
+  mode = "stack",
+  spacing = 24,
 }: StackScrollerProps) {
   // Shift the entire column so left/right don't sync perfectly
   const shifted = useTransform(progress, (v) => {
@@ -41,16 +47,30 @@ export default function StackScroller({
     // Create a "local" progress per item so they enter sequentially
     const local = useTransform(shifted, (v) => v * (1 + items.length * stagger) - i * stagger)
 
-    // Move from bottom (+travel) to top (-travel). When scrolling up, values go back.
-    const y = useTransform(local, [0, 1], [travel, -travel], { clamp: false })
-    // Fade in near bottom, hold, fade out near top
-    const opacity = useTransform(local, [-0.05, 0.02, 0.85, 1, 1.05], [0, 1, 1, 0, 0])
+    if (mode === "sequentialLeft") {
+      // Slide in from left once and stay visible
+      const x = useTransform(local, [0, 0.25], [-60, 0])
+      const opacity = useTransform(local, [0, 0.25], [0, 1])
+      const yStatic = i * spacing
+      return (
+        <motion.li
+          key={i}
+          style={{ x, opacity, y: yStatic, willChange: "transform, opacity" }}
+          className="text-left text-2xl font-extrabold leading-tight text-white/90 md:text-3xl"
+        >
+          {label}
+        </motion.li>
+      )
+    }
 
+    // Default "stack" mode: items flow vertically up and out
+    const y = useTransform(local, [0, 1], [travel, -travel], { clamp: false })
+    const opacity = useTransform(local, [-0.05, 0.02, 0.85, 1, 1.05], [0, 1, 1, 0, 0])
     return (
       <motion.li
         key={i}
         style={{ y, opacity, willChange: "transform, opacity" }}
-        className="inline-flex items-center justify-center rounded-full border border-white/15 bg-[linear-gradient(to_bottom,#161a36_0%,#0f1331_100%)] px-4 py-2 text-sm font-medium text-zinc-100 shadow-[0_0_0_1px_rgba(255,255,255,0.06)]"
+        className="text-2xl font-extrabold leading-tight text-white/90 md:text-3xl"
       >
         {label}
       </motion.li>
@@ -60,12 +80,15 @@ export default function StackScroller({
   return (
     <div
       className={cn(
-        "relative h-72 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-3 backdrop-blur",
+        mode === "sequentialLeft" ? "relative h-72" : "relative h-72",
+        "overflow-hidden p-0",
         "[mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]",
         className,
       )}
     >
-      <ul className="relative mx-auto flex w-full max-w-sm flex-col items-stretch gap-3">{listItems}</ul>
+      <ul className="relative mx-auto flex w-full max-w-xl flex-col items-start" role="list">
+        {listItems}
+      </ul>
     </div>
   )
 }

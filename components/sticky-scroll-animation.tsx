@@ -1,5 +1,8 @@
 "use client"
-import React, { useEffect, useRef, useState } from "react"
+
+import React, { useState } from "react"
+// @ts-ignore – package ships without types
+import { Scrollama, Step } from "react-scrollama"
 
 const scrollContent = [
   {
@@ -29,71 +32,69 @@ const scrollContent = [
   },
 ]
 
-const VH_PER_STEP = 120 // increase for longer dwell time per step
-
 export function StickyScrollAnimation() {
-  const wrapperRef = useRef<HTMLDivElement>(null)
   const [currentStep, setCurrentStep] = useState(0)
-  const [stepProgress, setStepProgress] = useState(0)
-  const [isMd, setIsMd] = useState(false)
 
-  const totalSteps = scrollContent.length
-  const totalHeightVh = totalSteps * VH_PER_STEP
+  // Step handlers
+  const onStepEnter = ({ data }: any) => setCurrentStep(data)
+  const onStepExit = ({ data, direction }: any) => {
+    if (direction === "up") setCurrentStep(Math.max(0, data - 1))
+  }
 
-  useEffect(() => {
-    let ticking = false
-    const onResize = () => setIsMd(window.innerWidth >= 768)
-    onResize()
-
-    const update = () => {
-      if (!wrapperRef.current) {
-        ticking = false
-        return
-      }
-      const wrapper = wrapperRef.current
-      const rect = wrapper.getBoundingClientRect()
-
-      // Convert rect.top (viewport) to document position
-      const start = window.scrollY + rect.top
-      const end = start + wrapper.offsetHeight - window.innerHeight
-      const denom = Math.max(1, end - start)
-      const overall = Math.max(0, Math.min(1, (window.scrollY - start) / denom))
-
-      const stepIndex = Math.min(totalSteps - 1, Math.floor(overall * totalSteps))
-      const progressInStep = overall * totalSteps - stepIndex
-
-      setCurrentStep(stepIndex)
-      setStepProgress(progressInStep)
-      ticking = false
-    }
-
-    const onScroll = () => {
-      if (!ticking) {
-        ticking = true
-        requestAnimationFrame(update)
-      }
-    }
-
-    window.addEventListener("scroll", onScroll, { passive: true })
-    window.addEventListener("resize", onResize)
-    // initial compute
-    update()
-
-    return () => {
-      window.removeEventListener("scroll", onScroll)
-      window.removeEventListener("resize", onResize)
-    }
-  }, [totalSteps])
+  const totalVh = scrollContent.length * 120
 
   return (
-    <div ref={wrapperRef} className="relative bg-[#000319]" style={{ height: `${totalHeightVh}vh` }}>
-      
-    </div>
-  )
-}
+    <section className="relative w-full" style={{ height: `${totalVh}vh` }}>
+      {/* Sticky visual layer */}
+      <div className="pointer-events-none sticky top-0 z-10 flex h-screen items-center justify-center bg-[#F4E5D8] text-gray-900">
+        <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold text-center px-4">Is this you?</h2>
 
-export default function StickyScrollAnimationPlaceholder() {
-  // Keeping a default export (no-op) avoids accidental import changes elsewhere.
-  // Use the named export { StickyScrollAnimation } as in app/page.tsx.
-  return null
+        {scrollContent.map((content, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-400 ${
+              index === currentStep ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <p className="absolute top-[20%] left-[5%] text-xl md:text-3xl font-semibold text-gray-900">
+              {content.topLeftText.split("\n").map((line, i) => (
+                <React.Fragment key={i}>
+                  {line}
+                  {i < content.topLeftText.split("\n").length - 1 && <br />}
+                </React.Fragment>
+              ))}
+            </p>
+            <p className="absolute top-[30%] right-[5%] text-xl md:text-3xl font-semibold text-gray-900 text-right">
+              {content.topRightText.split("\n").map((line, i) => (
+                <React.Fragment key={i}>
+                  {line}
+                  {i < content.topRightText.split("\n").length - 1 && <br />}
+                </React.Fragment>
+              ))}
+            </p>
+            {content.bottomLeftTexts && (
+              <div className="absolute bottom-[10%] left-[5%] flex flex-col items-start space-y-2">
+                {content.bottomLeftTexts.map((text, i) => (
+                  <p key={i} className="text-lg md:text-xl font-medium text-gray-900/60">
+                    {text}
+                  </p>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      {/* Scrolling steps layer */}
+      <div className="relative z-0">
+        <Scrollama onStepEnter={onStepEnter} onStepExit={onStepExit} offset={0.55}>
+          {scrollContent.map((_, idx) => (
+            <Step data={idx} key={idx}>
+              <div className="h-[120vh]" />
+            </Step>
+          ))}
+        </Scrollama>
+      </div>
+    </section>
+  )
 }

@@ -14,8 +14,8 @@ export default function FAQSection() {
               <span className="text-white">FAQ</span>
             </h2>
             <p className="mt-6 text-zinc-400">
-              Our AI‑driven automation eliminates busywork, streamlines your operations, and helps your business grow,
-              without extra effort.
+              Our AI repurposes your content instantly, turning one piece into dozens of ready-to-use posts so you can
+              stay active everywhere without the extra work.
             </p>
           </header>
 
@@ -58,32 +58,42 @@ export default function FAQSection() {
 const faqItems = [
   {
     value: "q1",
-    q: "How can AI automation help my business?",
-    a: "It removes repetitive tasks, speeds up content creation, and scales your output so your team can focus on higher‑value work.",
+    q: "Why FansLink is the best option for content repurposing",
+    a: "After using all other tools on the market, we couldn’t find anything that produces anything close to what we needed in terms of quality and results, with an efficient enough UI. So we built FansLink",
   },
   {
     value: "q2",
-    q: "Is AI difficult to integrate into my current system?",
-    a: "No. You can upload or paste links directly, and use our 1‑click exports or native integrations when you're ready.",
+    q: "What can I do with FansLink?",
+    a: "Re use the same piece of content across social media without being detected",
   },
   {
     value: "q3",
-    q: "What industries can benefit from AI automation?",
-    a: "Creators, agencies, media teams, and ecommerce—anyone who needs to produce and publish short‑form video at scale.",
+    q: "Do I need technical knowledge to use your tools?",
+    a: "Not at all. Our apps are simple desktop tools with a clean interface — no coding, integrations, or complicated setups needed.",
   },
   {
     value: "q4",
-    q: "What’s the difference between your pricing plans?",
-    a: "Plans vary by monthly clip credits, collaboration features, and export options. Start small and upgrade as you grow.",
+    q: "What does the Video Spoofing Tool do?",
+    a: "It changes video metadata (size, duration, source info) so you can refresh content and avoid duplicate flags on platforms.",
   },
   {
     value: "q5",
-    q: "How long does AI setup take?",
-    a: "Initial setup is minutes. Upload once, set your brand kit, and you're ready to repurpose across every platform.",
+    q: "Can I swap faces in videos using your tools?",
+    a: "Yes. Our Face Swap Tool makes it easy to replace faces in content, giving agencies flexibility to create new variations quickly.",
   },
   {
     value: "q6",
-    q: "Can I request a custom AI solution?",
-    a: "Yes. Tell us your workflow and we can tailor templates, captions, and posting to your stack.",
+    q: "Do you offer outreach automation tools?",
+    a: "Not yet — but they’re coming soon. Right now, our focus is on content production and file management automation.",
+  },
+  {
+    value: "q7",
+    q: "Can your tools help with file conversions and reducing file sizes?",
+    a: "Yes. We have a File Converter and Reducer to help you optimize content for uploading, storage, and platform requirements.",
+  },
+  {
+    value: "q8",
+    q: "Does FansLink work for all platforms?",
+    a: "Yes. our software works for repurposing content on Shorts, Tiktoks, Reels and any other social media platform you can think of",
   },
 ]

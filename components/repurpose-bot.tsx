@@ -25,16 +25,16 @@ export default function RepurposeBotSection() {
             </span>
           </h2>
           <p className="mt-4 max-w-prose text-lg text-zinc-400">
-            Upload one long‑form video. The bot auto‑cuts highlights, adds captions, resizes for every platform, and
-            queues posts so you can publish everywhere in minutes.
+            upload high performing content, click generate, and have hundreds of versions ready to upload to social
+            media without detection
           </p>
 
           {/* Feature bullets */}
           <ul className="mt-6 grid grid-cols-1 gap-4 text-sm text-zinc-200 sm:grid-cols-2">
-            <Feature icon={<Scissors className="h-4 w-4" />} title="One source → many clips" />
-            <Feature icon={<Sparkles className="h-4 w-4" />} title="Smart captions & brand fonts" />
-            <Feature icon={<Wand2 className="h-4 w-4" />} title="On‑brand templates every time" />
-            <Feature icon={<UploadCloud className="h-4 w-4" />} title="1‑click publish to all" />
+            <Feature icon={<Scissors className="h-4 w-4" />} title="Repurpose your content" />
+            <Feature icon={<Sparkles className="h-4 w-4" />} title="AI face swap" />
+            <Feature icon={<Wand2 className="h-4 w-4" />} title="File Reducer & Converter" />
+            <Feature icon={<UploadCloud className="h-4 w-4" />} title="Similarity Detection" />
           </ul>
 
           {/* CTAs */}
