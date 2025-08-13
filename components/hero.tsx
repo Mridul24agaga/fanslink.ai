@@ -2,7 +2,7 @@
 
 import PillButton from "@/components/pill-button"
 import RainbowBorder from "@/components/rainbow-border"
-import { ArrowRight, Star, Users } from "lucide-react"
+import { ArrowRight, Star, Users, User } from "lucide-react"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 
 export default function Hero() {
@@ -51,14 +51,36 @@ export default function Hero() {
               </PillButton>
             </RainbowBorder>
 
-            <button className="inline-flex items-center justify-center rounded-full border border-white/15 px-7 py-3.5 text-base text-white/90 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40">
+            <a href="#introducing" className="inline-flex items-center justify-center rounded-full border border-white/15 px-7 py-3.5 text-base text-white/90 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40">
               Learn more
-            </button>
+            </a>
           </div>
 
           {/* Trusted by row */}
           <div className="fl-hero-appear mt-7 flex flex-col items-center justify-center gap-3 text-sm text-zinc-400 sm:flex-row" style={{ animationDelay: "400ms" }}>
-            {/* avatars removed */}
+            {/* Avatar stack */}
+            <div className="flex -space-x-2 mb-2 sm:mb-0">
+              <Avatar className="h-8 w-8 border-2 border-white/20 bg-gradient-to-br from-gray-800 to-gray-400">
+                <AvatarFallback className="bg-gradient-to-br from-gray-800 to-gray-400 text-white">
+                  <User className="h-4 w-4" />
+                </AvatarFallback>
+              </Avatar>
+              <Avatar className="h-8 w-8 border-2 border-white/20 bg-gradient-to-br from-gray-700 to-gray-300">
+                <AvatarFallback className="bg-gradient-to-br from-gray-700 to-gray-300 text-white">
+                  <User className="h-4 w-4" />
+                </AvatarFallback>
+              </Avatar>
+              <Avatar className="h-8 w-8 border-2 border-white/20 bg-gradient-to-br from-gray-600 to-gray-300">
+                <AvatarFallback className="bg-gradient-to-br from-gray-600 to-gray-300 text-white">
+                  <User className="h-4 w-4" />
+                </AvatarFallback>
+              </Avatar>
+              <Avatar className="h-8 w-8 border-2 border-white/20 bg-gradient-to-br from-gray-500 to-gray-200">
+                <AvatarFallback className="bg-gradient-to-br from-gray-500 to-gray-200 text-white">
+                  <User className="h-4 w-4" />
+                </AvatarFallback>
+              </Avatar>
+            </div>
 
             <div className="flex items-center gap-3">
               <span className="text-white/90">Trusted by top agencies and creators</span>

@@ -53,7 +53,7 @@ export default function ContactUsSection() {
         <div>
           <div className="text-[10px] uppercase tracking-[0.14em] text-zinc-400">[ contact us ]</div>
           <h2 id="contact-us" className="mt-2 text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
-            CONTACT US
+            Ready to automate your workflow?
           </h2>
           <p className="mt-4 max-w-prose text-zinc-400">
             Let us know how we can help. Our team typically replies within one business day.

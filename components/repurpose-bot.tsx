@@ -6,7 +6,7 @@ import RainbowBorder from "@/components/rainbow-border"
 
 export default function RepurposeBotSection() {
   return (
-    <section className="relative snap-start min-h-[90vh] flex items-center py-8 md:py-12">
+    <section id="introducing" className="relative snap-start min-h-[90vh] flex items-center py-8 md:py-12">
       <div className="container mx-auto grid max-w-6xl grid-cols-1 items-center gap-8 md:gap-10 px-4 md:grid-cols-2">
         {/* Copy */}
         <div>

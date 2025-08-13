@@ -76,19 +76,19 @@ export default function BentoShowcaseSection() {
           </BentoCard>
 
           {/* Tall stats card */}
-          <BentoCard className="md:col-span-2 md:row-span-2">
+          <BentoCard className="md:col-span-2 md:row-span-2" variant="gradient">
             <div className="flex h-full flex-col justify-between">
               <div className="flex items-center gap-2">
                 <Badge icon={<Gauge className="h-4 w-4" />}>Speed</Badge>
               </div>
               <div className="mt-2">
                 <div className="text-5xl font-extrabold leading-none">5 sec</div>
-                <p className="mt-2 text-sm text-zinc-400">Average analysis time</p>
+                <p className="mt-2 text-sm text-zinc-400">Average processing time</p>
               </div>
               <div className="mt-6 grid grid-cols-3 gap-2 text-center">
-                <MiniStat label="Exports" value="99.9%" />
-                <MiniStat label="Clips/run" value="10‑20" />
-                <MiniStat label="Save time" value="3×" />
+                <MiniStat label="Accuracy" value="99.9%" />
+                <MiniStat label="Videos/min" value="12+" />
+                <MiniStat label="Time saved" value="95%" />
               </div>
             </div>
           </BentoCard>
@@ -110,12 +110,12 @@ export default function BentoShowcaseSection() {
             </div>
           </BentoCard>
 
-          {/* Preview video card */}
+          {/* Automation card */}
           <BentoCard className="md:col-span-2 md:row-span-1">
             <div className="flex h-full items-center justify-between gap-3">
               <div>
                 <div className="flex items-center gap-2">
-                  <Badge icon={<PlayCircle className="h-4 w-4" />}>Preview</Badge>
+                  <Badge icon={<PlayCircle className="h-4 w-4" />}>Automation</Badge>
                 </div>
                 <p className="mt-2 text-sm text-zinc-300">Generate 100+ repurposed reels in one click</p>
               </div>
@@ -132,14 +132,14 @@ export default function BentoShowcaseSection() {
             </div>
           </BentoCard>
 
-          {/* Publish card */}
+          {/* Presets card */}
           <BentoCard className="md:col-span-2 md:row-span-1">
             <div className="flex h-full items-center justify-between gap-3">
               <div>
                 <div className="flex items-center gap-2">
-                  <Badge icon={<UploadCloud className="h-4 w-4" />}>Publish</Badge>
+                  <Badge icon={<UploadCloud className="h-4 w-4" />}>Presets</Badge>
                 </div>
-                <p className="mt-2 text-sm text-zinc-300">Publish to IG Reels, Shorts (including trial reels)</p>
+                <p className="mt-2 text-sm text-zinc-300">Bespoke presets for Instagram, Shorts and more</p>
               </div>
               <div className="flex items-center gap-2">
                 <PlatformDot label="IG" />
@@ -153,7 +153,53 @@ export default function BentoShowcaseSection() {
   )
 }
 
-function BentoCard({ className, children }: { className?: string; children: React.ReactNode }) {
+function BentoCard({ className, children, variant }: { className?: string; children: React.ReactNode; variant?: "gradient" }) {
+  if (variant === "gradient") {
+    return (
+      <div className={cn("relative overflow-hidden rounded-2xl p-[3px]", className)} style={{
+        background: "linear-gradient(90deg, #ffffff 0%, #9aa7ff 30%, #7b61ff 55%, #ffd089 100%)",
+        backgroundSize: "200% 200%",
+        animation: "gradientShift 8s linear infinite"
+      }}>
+        <div
+          className={cn(
+            "group relative overflow-hidden rounded-[calc(1rem-1px)] bg-[#080B20] p-4 h-full",
+            "backdrop-blur-xl backdrop-saturate-150",
+            "transition-colors hover:bg-[#0a0e26]",
+          )}
+        >
+          {/* glass sheen overlay */}
+          <div
+            className="pointer-events-none absolute inset-0 z-0 rounded-[inherit] bg-[linear-gradient(125deg,rgba(255,255,255,0.18),rgba(255,255,255,0.08)_40%,transparent_65%)] opacity-80 [mask-image:linear-gradient(to_bottom,white,transparent_70%)]"
+            aria-hidden
+          />
+          {/* subtle top/bottom edge highlights */}
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-white/35 via-white/15 to-transparent opacity-90" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-black/30 to-black/40" />
+          {/* subtle corner glows */}
+          <div className="pointer-events-none absolute -right-10 -top-10 z-0 h-32 w-32 rounded-full bg-[radial-gradient(closest-side,rgba(123,97,255,0.18),transparent)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          {/* fine noise for realistic glass */}
+          <div className="glass-noise pointer-events-none absolute inset-0 z-0 rounded-[inherit] opacity-20 mix-blend-overlay" />
+          <div className="relative z-10">{children}</div>
+          <style jsx>{`
+            .glass-noise {
+              background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 140 140"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#n)" opacity="0.18"/></svg>');
+              background-size: 180px 180px;
+            }
+            @keyframes gradientShift {
+              0% {
+                background-position: 0% 50%;
+              }
+              100% {
+                background-position: 200% 50%;
+              }
+            }
+          `}</style>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div
       className={cn(

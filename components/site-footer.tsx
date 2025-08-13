@@ -10,10 +10,10 @@ export default function SiteFooter() {
         {/* Brand + blurb + socials */}
         <div className="flex flex-col gap-3">
           <Link href="/" className="inline-flex items-center gap-2">
-            <Image src="/images/fanslink-logo.png" alt="TikFusion" width={220} height={60} className="h-10 w-auto" />
+            <Image src="/images/fanslink-logo.png" alt="Fanslink" width={220} height={60} className="h-10 w-auto" />
           </Link>
           <p className="max-w-xs text-sm text-zinc-400">
-            Repurpose once. Publish everywhere. Grow faster with TikFusion.
+            Repurpose once. Publish everywhere. Grow faster with Fanslink.
           </p>
 
           <div className="mt-2 flex items-center gap-2">
@@ -41,7 +41,6 @@ export default function SiteFooter() {
             <p className="font-semibold text-white">Product</p>
             <ul className="space-y-1">
               <li><FooterLink href="#pricing">Pricing</FooterLink></li>
-              <li><FooterLink href="#">Templates</FooterLink></li>
               <li><FooterLink href="#team">Our Team</FooterLink></li>
             </ul>
           </div>
@@ -50,7 +49,7 @@ export default function SiteFooter() {
             <ul className="space-y-1">
               <li><FooterLink href="#faq">FAQ</FooterLink></li>
               <li><FooterLink href="#">Affiliate</FooterLink></li>
-              <li><FooterLink href="mailto:hey@tikfusion.app">Contact</FooterLink></li>
+              <li><FooterLink href="#contact">Contact</FooterLink></li>
             </ul>
           </div>
         </nav>
@@ -59,7 +58,7 @@ export default function SiteFooter() {
       {/* Legal row */}
       <div className="container mx-auto mt-8 border-t border-white/10 px-4 pt-6">
         <div className="flex flex-col items-start justify-between gap-3 text-xs text-zinc-400 sm:flex-row sm:items-center">
-          <p>© {new Date().getFullYear()} TikFusion. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Fanslink. All rights reserved.</p>
           <ul className="flex items-center gap-4">
             <li>
               <FooterLink href="#">Privacy</FooterLink>

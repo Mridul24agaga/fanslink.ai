@@ -10,10 +10,10 @@ import PillButton from "@/components/pill-button"
 import RainbowBorder from "@/components/rainbow-border"
 
 const links = [
-  { label: "Products", href: "#" },
-  { label: "Affiliate", href: "#" },
+  { label: "Products", href: "#showcase" },
+  { label: "About Us", href: "#team" },
   { label: "FAQ", href: "#faq" },
-  { label: "Telegram", href: "#" },
+  { label: "Contact", href: "#contact" },
 ]
 
 export default function SiteHeader() {
@@ -38,10 +38,10 @@ export default function SiteHeader() {
           ].join(" ")}
         >
           {/* Brand */}
-          <Link href="/" className="flex items-center gap-2" aria-label="TikFusion Home">
+          <Link href="/" className="flex items-center gap-2" aria-label="Fanslink Home">
             <Image
               src="/images/fanslink-logo.png"
-              alt="TikFusion"
+              alt="Fanslink"
               width={200}
               height={50}
               priority
@@ -61,12 +61,14 @@ export default function SiteHeader() {
           {/* Desktop CTA */}
           <div className="hidden items-center gap-3 md:flex">
             <RainbowBorder>
-              <PillButton size="sm" className="border-transparent group whitespace-nowrap">
-                <span className="inline-flex items-center">
-                  Get Fanslink Now
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                </span>
-              </PillButton>
+              <Link href="#pricing">
+                <PillButton size="sm" className="border-transparent group whitespace-nowrap">
+                  <span className="inline-flex items-center">
+                    Get Fanslink Now
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                </PillButton>
+              </Link>
             </RainbowBorder>
           </div>
 
@@ -92,12 +94,14 @@ export default function SiteHeader() {
                   ))}
                   <div className="mt-4 grid grid-cols-1 gap-2">
                     <RainbowBorder>
-                      <PillButton size="md" className="border-transparent group whitespace-nowrap w-full justify-center">
-                        <span className="inline-flex items-center">
-                          Get Fanslink Now
-                          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                        </span>
-                      </PillButton>
+                      <Link href="#pricing">
+                        <PillButton size="md" className="border-transparent group whitespace-nowrap w-full justify-center">
+                          <span className="inline-flex items-center">
+                            Get Fanslink Now
+                            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                          </span>
+                        </PillButton>
+                      </Link>
                     </RainbowBorder>
                   </div>
                 </div>

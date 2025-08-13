@@ -25,42 +25,31 @@ export default function PricingSection() {
           </h2>
 
           {/* Billing toggle */}
-          <div className="relative inline-flex items-center rounded-full border border-white/15 bg-white/5 p-1 shadow-[0_12px_40px_-16px_rgba(123,97,255,0.45)]">
+          <div className="relative inline-flex rounded-full border border-white/25 bg-white/5 p-1">
             <button
               type="button"
-              aria-pressed={billing === "monthly"}
               onClick={() => setBilling("monthly")}
               className={[
-                "relative z-10 rounded-full px-4 py-1.5 text-sm font-medium transition",
-                billing === "monthly"
-                  ? "text-white"
-                  : "text-zinc-300 hover:text-white",
+                "relative z-10 rounded-full px-6 py-2 text-sm font-semibold transition-all duration-200 min-w-[80px]",
+                billing === "monthly" 
+                  ? "text-black bg-white shadow-sm" 
+                  : "text-zinc-400 hover:text-zinc-200",
               ].join(" ")}
             >
               Monthly
             </button>
             <button
               type="button"
-              aria-pressed={billing === "yearly"}
               onClick={() => setBilling("yearly")}
               className={[
-                "relative z-10 rounded-full px-4 py-1.5 text-sm font-medium transition",
-                billing === "yearly" ? "text-white" : "text-zinc-300 hover:text-white",
+                "relative z-10 rounded-full px-6 py-2 text-sm font-semibold transition-all duration-200 min-w-[80px]",
+                billing === "yearly" 
+                  ? "text-black bg-white shadow-sm" 
+                  : "text-zinc-400 hover:text-zinc-200",
               ].join(" ")}
             >
-              <span className="mr-2">Yearly</span>
-              <span className="text-amber-300">-15%</span>
+              Yearly
             </button>
-            {/* sliding highlight */}
-            <span
-              aria-hidden
-              className={[
-                "absolute inset-y-1 left-1 w-[94px] rounded-full",
-                "bg-[linear-gradient(90deg,#5a4df3_0%,#7b61ff 60%,#8a6bff_100%)]",
-                "shadow-[0_10px_28px_-12px_rgba(123,97,255,0.8)] transition-transform",
-                billing === "monthly" ? "translate-x-0" : "translate-x-[96px]",
-              ].join(" ")}
-            />
           </div>
         </div>
 
@@ -70,10 +59,11 @@ export default function PricingSection() {
             planLabel="Repurpose Bot"
             monthlyPrice={149}
             yearlyPrice={1200}
+            yearlyMonthlyPrice={99}
             billing={billing}
             subtitleTop="Perfect for"
-            subtitleBottom="Small businesses"
-            ctaLabel="Choose Repurpose Bot"
+            subtitleBottom="All agencies and creators"
+            ctaLabel="Choose Fanslink Repurpose"
             iconUrl={basicIcon}
             features={[
               "Perfect for all agencies",
@@ -87,13 +77,13 @@ export default function PricingSection() {
 
           <PriceCard
             tone="highlight"
-            planLabel="FansLink Suite"
+            planLabel="Fanslink Suite"
             monthlyPrice={299}
             yearlyPrice={2399}
             billing={billing}
-            subtitleTop="Ultimate solution for"
-            subtitleBottom="Content creators & teams"
-            ctaLabel="Get Notified"
+            subtitleTop="Perfect for"
+            subtitleBottom="Agencies"
+            ctaLabel="Coming Soon"
             iconUrl={growthIcon}
             comingSoon
             features={[
@@ -118,6 +108,7 @@ function PriceCard({
   planLabel,
   monthlyPrice,
   yearlyPrice,
+  yearlyMonthlyPrice,
   billing,
   subtitleTop,
   subtitleBottom,
@@ -130,6 +121,7 @@ function PriceCard({
   planLabel: string
   monthlyPrice: number
   yearlyPrice?: number
+  yearlyMonthlyPrice?: number
   billing?: "monthly" | "yearly"
   subtitleTop: string
   subtitleBottom: string
@@ -140,17 +132,30 @@ function PriceCard({
 }) {
   const isHighlight = tone === "highlight"
   const isYearly = billing === "yearly"
-  const displayPrice = isYearly && yearlyPrice ? yearlyPrice : monthlyPrice
-  const priceSuffix = isYearly ? "/year" : "/month"
+  const displayPrice = isYearly
+    ? (typeof yearlyMonthlyPrice === "number"
+        ? yearlyMonthlyPrice
+        : (yearlyPrice ?? monthlyPrice))
+    : monthlyPrice
+  const priceSuffix = isYearly
+    ? (typeof yearlyMonthlyPrice === "number" ? "/month" : "/year")
+    : "/month"
 
   return (
-    <div
-      className={[
-        "relative overflow-hidden rounded-3xl border p-6 md:p-10",
-        "border-white/10 bg-white/[0.03]",
-        isHighlight ? "shadow-[0_0_0_1px_rgba(255,255,255,0.10),0_40px_80px_-20px_rgba(123,97,255,0.35)]" : "",
-      ].join(" ")}
-    >
+    <div className="relative overflow-hidden rounded-3xl p-[3px]" style={{
+      background: tone === "subtle" 
+        ? "linear-gradient(90deg, #ffffff 0%, #9aa7ff 30%, #7b61ff 55%, #ffd089 100%)"
+        : "transparent",
+      backgroundSize: tone === "subtle" ? "200% 200%" : "100% 100%",
+      animation: tone === "subtle" ? "gradientShift 8s linear infinite" : "none"
+    }}>
+      <div
+        className={[
+          "relative overflow-hidden rounded-[calc(1.5rem-1px)] p-6 md:p-10 h-full",
+          tone === "subtle" ? "bg-[#080B20]" : "bg-white/[0.03]",
+          isHighlight ? "border border-white/10 shadow-[0_0_0_1px_rgba(255,255,255,0.10),0_40px_80px_-20px_rgba(123,97,255,0.35)]" : "",
+        ].join(" ")}
+      >
       {/* top-right decorative icon */}
       <img
         src={iconUrl}
@@ -164,15 +169,9 @@ function PriceCard({
 
       {/* price or coming soon */}
       {comingSoon ? (
-        <div className="mt-3 mb-4">
-          <div className="flex items-center gap-3 mb-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-purple-500/30">
-              <div className="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></div>
-              <span className="text-sm font-semibold text-purple-300">Coming Soon</span>
-            </div>
-          </div>
-          <div className="text-2xl font-bold text-zinc-200 mb-1">FansLink Suite</div>
-          <div className="text-sm text-zinc-400">The complete automation platform</div>
+        <div className="mt-3 flex items-end gap-2">
+          <div className="text-4xl font-extrabold sm:text-5xl md:text-6xl">$$</div>
+          <div className="mb-2 text-xs uppercase tracking-wide text-zinc-400">Price TBD</div>
         </div>
       ) : (
         <div className="mt-3 flex items-end gap-2">
@@ -227,6 +226,17 @@ function PriceCard({
       {isHighlight && (
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-[radial-gradient(60%_50%_at_50%_120%,rgba(123,97,255,0.35),transparent)]" />
       )}
+      </div>
+      <style jsx>{`
+        @keyframes gradientShift {
+          0% {
+            background-position: 0% 50%;
+          }
+          100% {
+            background-position: 200% 50%;
+          }
+        }
+      `}</style>
     </div>
   )
 }

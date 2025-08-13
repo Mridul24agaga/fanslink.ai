@@ -20,7 +20,7 @@ export default function RainbowBorder({
   children,
   className,
   radius = "9999px",
-  thickness = 2,
+  thickness = 3,
   speedMs = 2500,
 }: RainbowBorderProps) {
   return (
@@ -30,7 +30,7 @@ export default function RainbowBorder({
 
       <style jsx>{`
         .rb-gradient {
-          background: linear-gradient(90deg, #ffffff, #9aa7ff, #7b61ff, #ffd089, #ffffff);
+          background: linear-gradient(90deg, #ffffff 0%, #9aa7ff 30%, #7b61ff 55%, #ffd089 100%);
           background-size: 200% 200%;
           animation: rainbowShift ${speedMs}ms linear infinite;
           filter: saturate(1.1);

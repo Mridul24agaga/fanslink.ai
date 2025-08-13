@@ -1,6 +1,4 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import RainbowBorder from "@/components/rainbow-border"
-import PillButton from "@/components/pill-button"
 import { Plus } from "lucide-react"
 
 export default function FAQSection() {
@@ -40,14 +38,6 @@ export default function FAQSection() {
                 </AccordionItem>
               ))}
             </Accordion>
-
-            <div className="mt-8 flex items-center">
-              <RainbowBorder>
-                <PillButton size="lg" className="border-transparent">
-                  Still have questions? Contact us
-                </PillButton>
-              </RainbowBorder>
-            </div>
           </div>
         </div>
       </div>
