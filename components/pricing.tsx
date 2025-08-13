@@ -56,7 +56,7 @@ export default function PricingSection() {
               aria-hidden
               className={[
                 "absolute inset-y-1 left-1 w-[94px] rounded-full",
-                "bg-[linear-gradient(90deg,#5a4df3_0%,#7b61ff_60%,#8a6bff_100%)]",
+                "bg-[linear-gradient(90deg,#5a4df3_0%,#7b61ff 60%,#8a6bff_100%)]",
                 "shadow-[0_10px_28px_-12px_rgba(123,97,255,0.8)] transition-transform",
                 billing === "monthly" ? "translate-x-0" : "translate-x-[96px]",
               ].join(" ")}
@@ -87,15 +87,25 @@ export default function PricingSection() {
 
           <PriceCard
             tone="highlight"
-            planLabel="Coming soon"
-            monthlyPrice={0}
+            planLabel="FansLink Suite"
+            monthlyPrice={299}
+            yearlyPrice={2399}
             billing={billing}
-            subtitleTop=""
-            subtitleBottom="7+ tools"
-            ctaLabel="Coming Soon"
+            subtitleTop="Ultimate solution for"
+            subtitleBottom="Content creators & teams"
+            ctaLabel="Get Notified"
             iconUrl={growthIcon}
             comingSoon
-            features={["7+ tools"]}
+            features={[
+              "Everything in Repurpose Bot",
+              "7+ additional AI tools",
+              "Team collaboration features",
+              "Advanced analytics dashboard",
+              "Custom AI model training",
+              "White-label solutions",
+              "Dedicated account manager",
+              "24/7 priority support"
+            ]}
           />
         </div>
       </div>
@@ -154,8 +164,15 @@ function PriceCard({
 
       {/* price or coming soon */}
       {comingSoon ? (
-        <div className="mt-3 flex items-end gap-2">
-          <div className="text-3xl font-extrabold sm:text-4xl md:text-5xl">Coming soon</div>
+        <div className="mt-3 mb-4">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-purple-500/30">
+              <div className="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></div>
+              <span className="text-sm font-semibold text-purple-300">Coming Soon</span>
+            </div>
+          </div>
+          <div className="text-2xl font-bold text-zinc-200 mb-1">FansLink Suite</div>
+          <div className="text-sm text-zinc-400">The complete automation platform</div>
         </div>
       ) : (
         <div className="mt-3 flex items-end gap-2">
@@ -174,7 +191,7 @@ function PriceCard({
           <PillButton
             aria-label={`Select ${planLabel} plan`}
             className={[
-              "w-full justify-start border border-white/20 bg-[linear-gradient(90deg,#6d5dfc_0%,#7b61ff_60%,#7b61ff_100%)] ring-1 ring-white/30 shadow-[0_20px_48px_-16px_rgba(123,97,255,0.55)]",
+              "w-full justify-start border border-white/20 bg-[linear-gradient(90deg,#6d5dfc_0%,#7b61ff 60%,#7b61ff 100%)] ring-1 ring-white/30 shadow-[0_20px_48px_-16px_rgba(123,97,255,0.55)]",
               comingSoon ? "opacity-60 pointer-events-none" : "hover:brightness-110",
             ].join(" ")}
             size="lg"

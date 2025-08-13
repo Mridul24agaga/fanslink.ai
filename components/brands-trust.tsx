@@ -17,14 +17,14 @@ export default function BrandsTrustSection() {
             tag="[ PROVEN RESULTS ]"
             titlePrimary="Manual repurposing is"
             titleSecondary="over"
-            imgSrc="https://framerusercontent.com/images/4tBBTStYBI6viIm3S0V32LWmEsE.png?scale-down-to=512"
+            imgSrc="121.png"
             imgAlt="Cube illustration"
           />
           <Card
             tag="[ SEAMLESS AI INTEGRATION ]"
             titlePrimary="73+ hours saved"
             titleSecondary="per week"
-            imgSrc="https://framerusercontent.com/images/wuAQkitFA7FROtqnxuSNB3IjY.png?scale-down-to=512"
+            imgSrc="122.png"
             imgAlt="Puzzle illustration"
           />
           <Card

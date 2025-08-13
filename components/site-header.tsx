@@ -20,7 +20,7 @@ export default function SiteHeader() {
   // Keep header appearance constant while scrolling
 
   return (
-    <header className="fixed top-0 z-50 w-full pointer-events-none h-16 relative overflow-visible">
+    <header className="fixed top-0 z-50 w-full pointer-events-none h-16 overflow-visible">
       {/* Animated shell that morphs between full-width bar and compact floating pill */}
       <div
         className={[
@@ -30,9 +30,10 @@ export default function SiteHeader() {
         ].join(" ")}
         style={{ pointerEvents: "auto" }}
       >
+        
         <div
           className={[
-            "container mx-auto flex items-center justify-between transition-all duration-300",
+            "container mx-auto flex items-center justify-between transition-all duration-300 relative z-10",
             "h-16 px-4",
           ].join(" ")}
         >

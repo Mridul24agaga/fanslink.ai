@@ -12,14 +12,26 @@ import PricingSection from "@/components/pricing"
 
 export default function Page() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#000319] text-white snap-y snap-mandatory" suppressHydrationWarning>
+    <main className="relative min-h-screen overflow-x-hidden bg-[#000319] text-white snap-y snap-mandatory" suppressHydrationWarning>
       <GradientBG />
+      {/* Spotlight background image for header + hero */}
+      <div
+        className="absolute inset-x-0 top-0 h-[120vh] z-0 pointer-events-none"
+        style={{
+          backgroundImage: "url(/spotligiiht.avif)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          opacity: 0.9,
+          filter: "brightness(1.3) saturate(1.15)",
+        }}
+      />
       <SiteHeader />
 
       {/* Hero + Sections with custom spacing per block */}
       <div className="flex flex-col" id="main-content">
         {/* Hero */}
-        <div data-reveal className="mb-10 sm:mb-12 md:mb-14 lg:mb-16">
+        <div data-reveal className="mb-6 sm:mb-8 md:mb-10 lg:mb-12">
           <Hero />
         </div>
 
