@@ -5,9 +5,9 @@ import { Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.dev',
+  title: "Fanslink — Agency's All‑in‑One Automation Suite",
+  description:
+    'Repurpose once, distribute everywhere. Turn one recording into a month of content and publish to all platforms with one click.',
 }
 
 const Display = Plus_Jakarta_Sans({

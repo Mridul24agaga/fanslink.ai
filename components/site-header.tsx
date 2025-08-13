@@ -20,11 +20,11 @@ export default function SiteHeader() {
   // Keep header appearance constant while scrolling
 
   return (
-    <header className="fixed top-0 z-50 w-full pointer-events-none h-16">
+    <header className="fixed top-0 z-50 w-full pointer-events-none h-16 relative overflow-visible">
       {/* Animated shell that morphs between full-width bar and compact floating pill */}
       <div
         className={[
-          "transition-all duration-300 ease-out",
+          "transition-all duration-300 ease-out relative z-10",
           "mx-auto max-w-none rounded-none",
           "bg-[#000319]/85 backdrop-blur supports-[backdrop-filter]:bg-[#000319]/75",
         ].join(" ")}

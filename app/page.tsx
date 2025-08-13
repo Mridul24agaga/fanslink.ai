@@ -16,25 +16,25 @@ export default function Page() {
       <GradientBG />
       <SiteHeader />
 
-      {/* Hero + Sections with consistent spacing */}
-      <div className="flex flex-col space-y-16 sm:space-y-20 md:space-y-24 lg:space-y-28" id="main-content">
+      {/* Hero + Sections with custom spacing per block */}
+      <div className="flex flex-col" id="main-content">
         {/* Hero */}
-        <div data-reveal>
+        <div data-reveal className="mb-10 sm:mb-12 md:mb-14 lg:mb-16">
           <Hero />
         </div>
 
         {/* Repurposing Bot */}
-        <div data-reveal>
+        <div data-reveal className="mb-16 sm:mb-20 md:mb-24 lg:mb-28">
           <RepurposeBotSection />
         </div>
 
         {/* Bento Showcase */}
-        <div data-reveal>
+        <div data-reveal className="mb-16 sm:mb-20 md:mb-24 lg:mb-28">
           <BentoShowcaseSection />
         </div>
 
         {/* Brands trust section */}
-        <div data-reveal>
+        <div data-reveal className="mb-16 sm:mb-20 md:mb-24 lg:mb-28">
           <BrandsTrustSection />
         </div>
 
@@ -43,24 +43,24 @@ export default function Page() {
         {/* Testimonials hidden for now */}
 
         {/* Team */}
-        <div data-reveal>
+        <div data-reveal className="mb-16 sm:mb-20 md:mb-24 lg:mb-28">
           <TeamSection />
         </div>
 
         {/* Pricing */}
-        <div data-reveal>
+        <div data-reveal className="mb-16 sm:mb-20 md:mb-24 lg:mb-28">
           <PricingSection />
         </div>
 
         {/* CTA Band temporarily removed */}
 
         {/* FAQ */}
-        <div data-reveal>
+        <div data-reveal className="mb-16 sm:mb-20 md:mb-24 lg:mb-28">
           <FAQSection />
         </div>
 
         {/* Contact Us */}
-        <div data-reveal>
+        <div data-reveal className="mb-16 sm:mb-20 md:mb-24 lg:mb-28">
           <ContactUsSection />
         </div>
       </div>

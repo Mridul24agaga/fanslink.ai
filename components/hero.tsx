@@ -7,7 +7,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 
 export default function Hero() {
   return (
-    <section className="relative snap-start min-h-[calc(100vh-4rem)] flex items-center">
+    <section className="relative snap-start min-h-[calc(100vh-4rem)] flex items-center overflow-hidden">
       <div className="container relative z-10 mx-auto px-4">
         <div className="mx-auto max-w-6xl text-center">
           {/* Badge */}

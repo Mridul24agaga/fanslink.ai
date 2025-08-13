@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useRef, useState } from "react"
-import { Wand2, Scissors, Sparkles, UploadCloud } from "lucide-react"
+import { RefreshCcw, ScanFace, FileCog, Search } from "lucide-react"
 import PillButton from "@/components/pill-button"
 import RainbowBorder from "@/components/rainbow-border"
 
@@ -21,20 +21,20 @@ export default function RepurposeBotSection() {
                 backgroundImage: "linear-gradient(90deg, #ffffff 0%, #9aa7ff 30%, #7b61ff 55%, #ffd089 100%)",
               }}
             >
-              {"Repurposing Bot"}
+              {"Repurpose Platform."}
             </span>
           </h2>
           <p className="mt-4 max-w-prose text-lg text-zinc-400">
-            upload high performing content, click generate, and have hundreds of versions ready to upload to social
+            Upload high performing content, click generate, and have hundreds of versions ready to upload to social
             media without detection
           </p>
 
           {/* Feature bullets */}
           <ul className="mt-6 grid grid-cols-1 gap-4 text-sm text-zinc-200 sm:grid-cols-2">
-            <Feature icon={<Scissors className="h-4 w-4" />} title="Repurpose your content" />
-            <Feature icon={<Sparkles className="h-4 w-4" />} title="AI face swap" />
-            <Feature icon={<Wand2 className="h-4 w-4" />} title="File Reducer & Converter" />
-            <Feature icon={<UploadCloud className="h-4 w-4" />} title="Similarity Detection" />
+            <Feature icon={<RefreshCcw className="h-4 w-4" />} title="Repurpose your content" />
+            <Feature icon={<ScanFace className="h-4 w-4" />} title="AI face swap" />
+            <Feature icon={<FileCog className="h-4 w-4" />} title="File Reducer & Converter" />
+            <Feature icon={<Search className="h-4 w-4" />} title="Similarity Detection" />
           </ul>
 
           {/* CTAs */}

@@ -7,12 +7,27 @@ import { cn } from "@/lib/utils"
 
 export default function BentoShowcaseSection() {
   return (
-    <section aria-labelledby="showcase" className="relative snap-start py-10 md:py-14">
+    <section aria-labelledby="showcase" className="relative snap-start py-10 md:py-14 overflow-hidden">
+      {/* Full-section spotlight background */}
+      <img
+        src="https://framerusercontent.com/images/0J5Sh8pzQ8QLRcicRCJ91lYaInI.png?scale-down-to=1024"
+        alt=""
+        aria-hidden
+        className="pointer-events-none absolute left-0 -top-32 -z-10 w-full h-[520px] sm:h-[600px] md:h-[680px] object-cover object-left-top [mask-image:linear-gradient(to_bottom,white_0%,white_70%,transparent_100%)]"
+      />
       <div className="container mx-auto max-w-6xl px-4">
         <header className="mb-8 max-w-3xl md:mb-10">
           <div className="text-[10px] uppercase tracking-[0.14em] text-zinc-400">[ features ]</div>
           <h2 id="showcase" className="mt-2 text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
-            What you get with Fanslink
+            What you get
+            <span
+              className="bg-clip-text text-transparent"
+              style={{
+                backgroundImage: "linear-gradient(90deg, #ffffff 0%, #9aa7ff 30%, #7b61ff 55%, #ffd089 100%)",
+              }}
+            >
+              {" With Fanslink"}
+            </span>
           </h2>
           
         </header>
@@ -145,7 +160,7 @@ function BentoCard({ className, children }: { className?: string; children: Reac
         "group relative overflow-hidden rounded-2xl border border-white/20 bg-white/[0.06] p-4",
         "backdrop-blur-xl backdrop-saturate-150",
         "shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_15px_40px_-20px_rgba(0,0,0,0.45)]",
-        "transition-all hover:translate-y-[-2px] hover:bg-white/[0.08]",
+        "transition-colors hover:bg-white/[0.08]",
         className,
       )}
     >
