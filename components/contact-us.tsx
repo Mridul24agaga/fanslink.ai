@@ -8,39 +8,47 @@ import PillButton from "@/components/pill-button"
 export default function ContactUsSection() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [status, setStatus] = useState<null | { ok: boolean; message: string }>(null)
-  const emailTo = process.env.NEXT_PUBLIC_WEB3FORMS_TO
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     if (isSubmitting) return
+    
+    const form = e.currentTarget
     setIsSubmitting(true)
     setStatus(null)
+    
     try {
-      const form = e.currentTarget
-      // Build FormData per Web3Forms sample
-      const fd = new FormData(form)
-      if (!fd.get("access_key")) fd.append("access_key", "88628c63-67f2-4fad-ad33-915100b45f3d")
-      if (!fd.get("subject")) fd.append("subject", "New contact form submission")
-      if (!fd.get("from_name") && fd.get("name")) fd.append("from_name", String(fd.get("name") || ""))
-      if (!fd.get("from_email") && fd.get("email")) fd.append("from_email", String(fd.get("email") || ""))
-      if (!fd.get("replyto") && fd.get("email")) fd.append("replyto", String(fd.get("email") || ""))
-      // Optional: attempt to set recipient if provided
-      if (emailTo && !fd.get("emails")) fd.append("emails", String(emailTo))
-
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const formData = new FormData(form)
+      
+      // Add your Web3Forms access key
+      formData.append("access_key", "88628c63-67f2-4fad-ad33-915100b45f3d")
+      
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { Accept: "application/json" },
-        body: fd,
+        headers: {
+          "Accept": "application/json"
+        },
+        body: formData
       })
-      const data = await res.json()
-      if (data?.success) {
-        setStatus({ ok: true, message: "Thanks! Your message has been sent." })
+      
+      const result = await response.json()
+      
+      if (response.ok && result.success) {
+        setStatus({ ok: true, message: "Thanks! Your message has been sent successfully." })
         form.reset()
       } else {
-        setStatus({ ok: false, message: data?.message || "Something went wrong. Please try again." })
+        console.error("Web3Forms error:", result)
+        setStatus({ 
+          ok: false, 
+          message: result.message || `Error: ${response.status} - ${response.statusText}` 
+        })
       }
-    } catch (err) {
-      setStatus({ ok: false, message: "Network error. Please try again." })
+    } catch (error) {
+      console.error("Form submission error:", error)
+      setStatus({ 
+        ok: false, 
+        message: "Failed to send message. Please check your internet connection and try again." 
+      })
     } finally {
       setIsSubmitting(false)
     }
@@ -63,21 +71,42 @@ export default function ContactUsSection() {
         {/* Right form (integrated with Web3Forms) */}
         <div className="relative rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur">
           <form className="space-y-4" onSubmit={handleSubmit}>
-            {/* Honeypot for bots (Web3Forms) */}
-            <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} aria-hidden="true" />
-            {/* Optional: subject to appear in email */}
-            <input type="hidden" name="subject" value="Fanslink Contact" />
+            {/* Web3Forms honeypot for spam protection */}
+            <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
+            
+            {/* Hidden fields for Web3Forms */}
+            <input type="hidden" name="subject" value="New Contact Form Submission from Fanslink" />
+            <input type="hidden" name="from_name" value="Fanslink Website" />
+            
             <div>
-              <label className="mb-1 block text-xs text-zinc-400">Name</label>
-              <Input name="name" placeholder="Jane Smith" required />
+              <label htmlFor="name" className="mb-1 block text-xs text-zinc-400">Name</label>
+              <Input 
+                id="name"
+                name="name" 
+                type="text"
+                placeholder="Jane Smith" 
+                required 
+              />
             </div>
             <div>
-              <label className="mb-1 block text-xs text-zinc-400">Email</label>
-              <Input name="email" type="email" placeholder="mail@site.com" required />
+              <label htmlFor="email" className="mb-1 block text-xs text-zinc-400">Email</label>
+              <Input 
+                id="email"
+                name="email" 
+                type="email" 
+                placeholder="mail@site.com" 
+                required 
+              />
             </div>
             <div>
-              <label className="mb-1 block text-xs text-zinc-400">Message</label>
-              <Textarea name="message" placeholder="Your message" className="min-h-28" required />
+              <label htmlFor="message" className="mb-1 block text-xs text-zinc-400">Message</label>
+              <Textarea 
+                id="message"
+                name="message" 
+                placeholder="Your message" 
+                className="min-h-28" 
+                required 
+              />
             </div>
             <div className="flex items-center justify-between pt-1 text-xs text-zinc-400">
               <span>

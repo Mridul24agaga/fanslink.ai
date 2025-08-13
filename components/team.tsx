@@ -1,5 +1,5 @@
 import React from "react"
-import { Linkedin, Instagram, Twitter } from "lucide-react"
+import { Linkedin } from "lucide-react"
 
 export default function TeamSection() {
   return (
@@ -22,18 +22,21 @@ export default function TeamSection() {
           </div>
 
           {/* Grid */}
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 justify-items-center">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 place-items-center">
             <ProfileCard
               name="Tom Morley"
               img="https://www.morleyconsultants.com/asdfghjk%202.png"
+              linkedinUrl="https://www.linkedin.com/in/tom-morley-461032281/"
             />
             <ProfileCard
               name="Finley Skynner"
-              img="https://media.licdn.com/dms/image/v2/D4E03AQG0AmzfcwMBtA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1729349335484?e=1758153600&v=beta&t=OtdOygt5QyQaNgOseQS8W8mXMn0oKseeMFyuZg5he24"
+              img="/fin.png"
+              linkedinUrl="https://www.linkedin.com/in/finley-skynner"
             />
             <ProfileCard
               name="Dominik Scheucher"
               img="https://ca.slack-edge.com/T0862A2SRPD-U0882H9UT38-345348665c74-512"
+              linkedinUrl="https://www.linkedin.com/in/dominik-scheucher/"
             />
 
           </div>
@@ -44,15 +47,17 @@ export default function TeamSection() {
   )
 }
 
-function ProfileCard({ name, img }: { name: string; img: string }) {
+function ProfileCard({ name, img, linkedinUrl }: { name: string; img: string; linkedinUrl: string }) {
   return (
-    <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
-      <img
-        src={img}
-        alt={name}
-        className="h-[420px] w-full object-cover object-center transition-all duration-700 group-hover:scale-[1.04] group-hover:blur-[2px]"
-        loading="lazy"
-      />
+    <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] w-full max-w-sm mx-auto">
+      <div className="aspect-[3/4] w-full overflow-hidden">
+        <img
+          src={img}
+          alt={name}
+          className="h-full w-full object-cover object-center transition-all duration-700 group-hover:scale-[1.04] group-hover:blur-[2px]"
+          loading="lazy"
+        />
+      </div>
       {/* vignette & halo */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent transition-opacity duration-500 group-hover:opacity-100" />
       <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-[radial-gradient(70%_60%_at_50%_90%,rgba(255,208,137,0.18),transparent_60%)]" />
@@ -62,31 +67,13 @@ function ProfileCard({ name, img }: { name: string; img: string }) {
         <h3 className="text-lg font-semibold tracking-tight text-white drop-shadow-sm">{name}</h3>
         <div className="mt-3 flex items-center gap-2 opacity-0 transition-all duration-400 ease-out group-hover:translate-y-0 group-hover:opacity-100 translate-y-1">
           <a
-            href="#"
-            aria-label="LinkedIn"
+            href={linkedinUrl}
+            aria-label={`${name} LinkedIn Profile`}
             className="inline-flex size-8 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white/80 backdrop-blur hover:bg-white/15"
             target="_blank"
             rel="noreferrer"
           >
             <Linkedin className="size-4" />
-          </a>
-          <a
-            href="#"
-            aria-label="Instagram"
-            className="inline-flex size-8 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white/80 backdrop-blur hover:bg-white/15"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Instagram className="size-4" />
-          </a>
-          <a
-            href="#"
-            aria-label="X"
-            className="inline-flex size-8 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white/80 backdrop-blur hover:bg-white/15"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Twitter className="size-4" />
           </a>
         </div>
       </div>

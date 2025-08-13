@@ -38,13 +38,13 @@ export default function RepurposeBotSection() {
           </ul>
 
           {/* CTAs */}
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-8 flex flex-row gap-3 items-center">
             <RainbowBorder>
-              <PillButton size="lg" className="border-transparent">
+              <PillButton size="lg" className="border-transparent flex-1 sm:flex-initial justify-center">
                 Launch the Bot
               </PillButton>
             </RainbowBorder>
-            <button className="rounded-full border border-white/15 px-6 py-3 text-base text-white/90 hover:bg-white/10">
+            <button className="rounded-full border border-white/15 px-4 py-3 text-sm sm:text-base text-white/90 hover:bg-white/10 flex-1 sm:flex-initial whitespace-nowrap">
               See how it works
             </button>
           </div>

@@ -79,23 +79,44 @@ export default function SiteHeader() {
                 <Button
                   variant="outline"
                   size="icon"
-                  className="h-9 w-9 border-white/20 bg-transparent text-white hover:bg-white/10"
+                  className="h-10 w-10 border-white/25 bg-white/5 text-white hover:bg-white/10 hover:border-white/40 backdrop-blur-sm"
                   aria-label="Open menu"
                 >
-                  <Menu className="h-4 w-4" />
+                  <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-80 border-white/10 bg-[#000319] text-white">
-                <div className="mt-8 grid gap-3">
-                  {links.map((l) => (
-                    <MobileLink key={l.label} href={l.href}>
-                      {l.label}
-                    </MobileLink>
-                  ))}
-                  <div className="mt-4 grid grid-cols-1 gap-2">
+              <SheetContent 
+                side="right" 
+                className="w-full max-w-sm border-l border-white/10 bg-[#000319]/95 backdrop-blur-xl text-white p-0 sm:max-w-md"
+              >
+                {/* Header */}
+                <div className="flex items-center justify-between p-6 pb-4 border-b border-white/10">
+                  <Image
+                    src="/images/fanslink-logo.png"
+                    alt="Fanslink"
+                    width={120}
+                    height={30}
+                    className="h-6 w-auto"
+                  />
+                </div>
+
+                {/* Navigation */}
+                <div className="flex flex-col h-full">
+                  <nav className="flex-1 px-6 py-6">
+                    <div className="space-y-1">
+                      {links.map((l) => (
+                        <MobileLink key={l.label} href={l.href}>
+                          {l.label}
+                        </MobileLink>
+                      ))}
+                    </div>
+                  </nav>
+
+                  {/* CTA Section */}
+                  <div className="p-6 pt-4 border-t border-white/10">
                     <RainbowBorder>
                       <Link href="#pricing">
-                        <PillButton size="md" className="border-transparent group whitespace-nowrap w-full justify-center">
+                        <PillButton size="lg" className="border-transparent group whitespace-nowrap w-full justify-center">
                           <span className="inline-flex items-center">
                             Get Fanslink Now
                             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -103,6 +124,13 @@ export default function SiteHeader() {
                         </PillButton>
                       </Link>
                     </RainbowBorder>
+                    
+                    {/* Footer info */}
+                    <div className="mt-6 text-center">
+                      <p className="text-xs text-zinc-400">
+                        Ready to automate your workflow?
+                      </p>
+                    </div>
                   </div>
                 </div>
               </SheetContent>
@@ -130,9 +158,10 @@ function MobileLink({ href, children }: { href: string; children: React.ReactNod
   return (
     <Link
       href={href}
-      className="rounded-md px-2 py-2 text-base text-zinc-200 transition-colors hover:bg-white/10 hover:text-white"
+      className="group flex items-center justify-between rounded-xl px-4 py-4 text-lg font-medium text-zinc-200 transition-all duration-200 hover:bg-white/5 hover:text-white active:bg-white/10"
     >
-      {children}
+      <span>{children}</span>
+      <ArrowRight className="h-4 w-4 opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-1" />
     </Link>
   )
 }
