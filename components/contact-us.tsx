@@ -4,6 +4,7 @@ import React, { useState } from "react"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import PillButton from "@/components/pill-button"
+import RainbowBorder from "@/components/rainbow-border"
 
 export default function ContactUsSection() {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -108,15 +109,21 @@ export default function ContactUsSection() {
                 required 
               />
             </div>
-            <div className="flex items-center justify-between pt-1 text-xs text-zinc-400">
-              <span>
-                By submitting, you agree to our <a className="underline underline-offset-2" href="#">Terms</a> and
-                <a className="underline underline-offset-2" href="#"> Privacy Policy</a>.
-              </span>
-              <PillButton type="submit" className="border-transparent" disabled={isSubmitting}>
-                {isSubmitting ? "Sending…" : "Submit"}
-              </PillButton>
+            <div className="space-y-3 pt-2">
+              <RainbowBorder>
+                <PillButton 
+                  type="submit" 
+                  size="lg"
+                  className="border-transparent w-full justify-center font-semibold" 
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Sending Message…" : "Send Message"}
+                </PillButton>
+              </RainbowBorder>
             </div>
+            <p className="text-xs text-zinc-400 text-center mt-3">
+              By submitting, you agree to our <a className="underline underline-offset-2 hover:text-zinc-300" href="#">Terms</a> and <a className="underline underline-offset-2 hover:text-zinc-300" href="#">Privacy Policy</a>.
+            </p>
             {status && (
               <div className={`text-sm ${status.ok ? "text-emerald-300" : "text-red-300"}`}>
                 {status.message}
@@ -124,16 +131,21 @@ export default function ContactUsSection() {
             )}
           </form>
 
-          {/* Discord CTA */}
-          <div className="mt-5 flex items-center justify-center">
-            <a
-              href="https://discord.gg/7DHrUwrkYd"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-full border border-transparent bg-[#5865F2] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:brightness-110"
-            >
-              Join our Discord
-            </a>
+          {/* Discord CTA - Less prominent */}
+          <div className="mt-6 pt-4 border-t border-white/10">
+            <p className="text-center text-xs text-zinc-400 mb-3">
+              Need instant help? Join our community
+            </p>
+            <div className="flex items-center justify-center">
+              <a
+                href="https://discord.gg/7DHrUwrkYd"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-lg border border-white/20 bg-white/5 px-4 py-2 text-xs font-medium text-zinc-300 transition-colors hover:bg-white/10 hover:text-white"
+              >
+                Join Discord
+              </a>
+            </div>
           </div>
         </div>
       </div>

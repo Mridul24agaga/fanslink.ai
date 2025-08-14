@@ -13,6 +13,7 @@ const links = [
   { label: "Products", href: "#showcase" },
   { label: "About Us", href: "#team" },
   { label: "FAQ", href: "#faq" },
+  { label: "Discord", href: "https://discord.gg/7DHrUwrkYd" },
   { label: "Contact", href: "#contact" },
 ]
 
@@ -143,8 +144,14 @@ export default function SiteHeader() {
 }
 
 function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
+  const isExternal = href.startsWith("http")
   return (
-    <Link href={href} className="group relative text-sm text-zinc-300 transition-colors hover:text-white">
+    <Link 
+      href={href} 
+      className="group relative text-sm text-zinc-300 transition-colors hover:text-white"
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
+    >
       <span>{children}</span>
       <span
         className="pointer-events-none absolute -bottom-1 left-0 block h-px w-full scale-x-0 bg-gradient-to-r from-white/0 via-white/80 to-white/0 transition-transform duration-300 group-hover:scale-x-100"
@@ -155,10 +162,13 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
 }
 
 function MobileLink({ href, children }: { href: string; children: React.ReactNode }) {
+  const isExternal = href.startsWith("http")
   return (
     <Link
       href={href}
       className="group flex items-center justify-between rounded-xl px-4 py-4 text-lg font-medium text-zinc-200 transition-all duration-200 hover:bg-white/5 hover:text-white active:bg-white/10"
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
     >
       <span>{children}</span>
       <ArrowRight className="h-4 w-4 opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-1" />

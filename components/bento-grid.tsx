@@ -14,6 +14,10 @@ export default function BentoShowcaseSection() {
         alt=""
         aria-hidden
         className="pointer-events-none absolute left-0 -top-32 -z-10 w-full h-[520px] sm:h-[600px] md:h-[680px] object-cover object-left-top [mask-image:linear-gradient(to_bottom,white_0%,white_70%,transparent_100%)]"
+        style={{
+          filter: "brightness(2.5) contrast(1.4) saturate(1.5)",
+          opacity: 1
+        }}
       />
       <div className="container mx-auto max-w-6xl px-4">
         <header className="mb-8 max-w-3xl md:mb-10">

@@ -52,13 +52,15 @@ export default function RepurposeBotSection() {
 
         {/* Visual */}
         <div className="relative">
-          <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur">
+          <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur min-h-[320px] flex flex-col">
             <div className="mb-4 flex items-center justify-between">
               <div className="h-3 w-3 rounded-full bg-red-400/70" />
               <div className="h-3 w-3 rounded-full bg-yellow-300/70" />
               <div className="h-3 w-3 rounded-full bg-emerald-400/70" />
             </div>
-            <AnimatedConsole />
+            <div className="flex-1">
+              <AnimatedConsole />
+            </div>
           </div>
           
         </div>
