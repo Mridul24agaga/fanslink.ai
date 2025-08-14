@@ -1,5 +1,6 @@
 import React from "react"
 import { Linkedin } from "lucide-react"
+import Image from "next/image"
 
 export default function TeamSection() {
   return (
@@ -51,11 +52,15 @@ function ProfileCard({ name, img, linkedinUrl }: { name: string; img: string; li
   return (
     <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] w-full max-w-sm mx-auto">
       <div className="aspect-[3/4] w-full overflow-hidden">
-        <img
+        <Image
           src={img}
           alt={name}
-          className="h-full w-full object-cover object-center transition-all duration-700 group-hover:scale-[1.04] group-hover:blur-[2px]"
-          loading="lazy"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover object-center transition-all duration-700 group-hover:scale-[1.04] group-hover:blur-[2px]"
+          priority={name === "Finley Skynner"}
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkbHB0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
         />
       </div>
       {/* vignette & halo */}

@@ -1,5 +1,5 @@
 export default function GradientBG() {
-  return <ScrollRevealScript />
+  return null // Scroll animations disabled
 }
 
 function ScrollRevealScript() {

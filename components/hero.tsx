@@ -11,13 +11,13 @@ export default function Hero() {
       <div className="container relative z-10 mx-auto">
         <div className="mx-auto max-w-6xl text-center">
           {/* Badge */}
-          <span className="fl-hero-appear inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 sm:px-4 py-1.5 text-xs sm:text-sm text-zinc-300 backdrop-blur" style={{ animationDelay: "80ms" }}>
+          <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 sm:px-4 py-1.5 text-xs sm:text-sm text-zinc-300 backdrop-blur">
             <span className="hidden sm:inline">{"New • Improved workflow and brand‑safe exports"}</span>
             <span className="sm:hidden">{"New • Improved workflow"}</span>
           </span>
 
           {/* Headline */}
-          <h1 className="fl-hero-appear mt-4 sm:mt-6 text-center text-balance text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight" style={{ animationDelay: "160ms" }}>
+          <h1 className="mt-4 sm:mt-6 text-center text-balance text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight">
             <span className="text-white">Your </span>
             <span
               className="bg-clip-text text-transparent"
@@ -37,15 +37,15 @@ export default function Hero() {
           </h1>
 
           {/* Subcopy */}
-          <p className="fl-hero-appear mx-auto mt-3 sm:mt-4 max-w-2xl sm:max-w-3xl text-pretty text-lg sm:text-xl text-zinc-400 px-2 sm:px-0" style={{ animationDelay: "240ms" }}>
+          <p className="mx-auto mt-3 sm:mt-4 max-w-2xl sm:max-w-3xl text-pretty text-lg sm:text-xl text-zinc-400 px-2 sm:px-0">
             <span className="hidden sm:inline">Repurpose once, distribute everywhere. Create a system that grows revenue faster by publishing to all platforms with one click.</span>
             <span className="sm:hidden">Repurpose once, distribute everywhere. Automate your content workflow with one click.</span>
           </p>
 
           {/* CTAs */}
-          <div className="fl-hero-appear mt-6 sm:mt-8 flex flex-row items-center justify-center gap-2 sm:gap-3 px-2 sm:px-0" style={{ animationDelay: "320ms" }}>
+          <div className="mt-6 sm:mt-8 flex flex-row items-center justify-center gap-2 sm:gap-3 px-2 sm:px-0">
             <RainbowBorder>
-              <PillButton size="lg" className="border-transparent group whitespace-nowrap flex-1 sm:flex-initial text-sm sm:text-base px-4 sm:px-6 py-3 sm:py-3.5">
+              <PillButton size="lg" className="border-transparent group whitespace-nowrap flex-1 sm:flex-initial text-base sm:text-base px-6 sm:px-6 py-4 sm:py-3.5 min-h-[52px] sm:min-h-[44px]">
                 <span className="inline-flex items-center justify-center">
                   <span className="hidden sm:inline">Get Fanslink Now</span>
                   <span className="sm:hidden">Get Started</span>
@@ -54,13 +54,13 @@ export default function Hero() {
               </PillButton>
             </RainbowBorder>
 
-            <a href="#introducing" className="inline-flex items-center justify-center rounded-full border border-white/15 px-4 sm:px-7 py-3 sm:py-3.5 text-sm sm:text-base text-white/90 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40 whitespace-nowrap flex-1 sm:flex-initial">
+            <a href="#introducing" className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 sm:px-7 py-4 sm:py-3.5 text-base sm:text-base text-white/90 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40 whitespace-nowrap flex-1 sm:flex-initial min-h-[52px] sm:min-h-[44px]">
               Learn more
             </a>
           </div>
 
           {/* Trusted by row */}
-          <div className="fl-hero-appear mt-6 sm:mt-7 flex flex-col items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm text-zinc-400 px-4 sm:px-0" style={{ animationDelay: "400ms" }}>
+          <div className="mt-6 sm:mt-7 flex flex-col items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm text-zinc-400 px-4 sm:px-0">
             {/* Avatar stack */}
             <div className="flex -space-x-2">
               <Avatar className="h-6 w-6 sm:h-8 sm:w-8 border-2 border-white/20 bg-gradient-to-br from-gray-800 to-gray-400">

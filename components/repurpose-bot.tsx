@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useRef, useState } from "react"
+import React from "react"
 import { RefreshCcw, ScanFace, FileCog, Search } from "lucide-react"
 import PillButton from "@/components/pill-button"
 import RainbowBorder from "@/components/rainbow-border"
@@ -98,92 +98,16 @@ function AnimatedConsole() {
     "• Scheduling to TikTok, IG, YT Shorts… ✓",
   ]
 
-  const rootRef = useRef<HTMLDivElement | null>(null)
-  const [hasBegun, setHasBegun] = useState<boolean>(false)
-  const [visibleCount, setVisibleCount] = useState<number>(0)
-  const [cycle, setCycle] = useState<number>(0)
-
-  // Start the sequence only when the console scrolls into view
-  useEffect(() => {
-    if (hasBegun) return
-    if (typeof window === "undefined" || !("IntersectionObserver" in window)) {
-      // Fallback: start immediately
-      setHasBegun(true)
-      return
-    }
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setHasBegun(true)
-            observer.unobserve(entry.target)
-          }
-        })
-      },
-      { rootMargin: "0px 0px -10% 0px", threshold: 0.12 }
-    )
-    const node = rootRef.current
-    if (node) observer.observe(node)
-    return () => {
-      if (node) observer.unobserve(node)
-      observer.disconnect()
-    }
-  }, [hasBegun])
-
-  // Kick off the first line when we begin
-  useEffect(() => {
-    if (hasBegun && visibleCount === 0) setVisibleCount(1)
-  }, [hasBegun, visibleCount])
-
-  // Advance lines while active and visible
-  useEffect(() => {
-    if (!hasBegun) return
-    let isMounted = true
-    let timer: ReturnType<typeof setTimeout>
-
-    const advance = () => {
-      if (!isMounted) return
-      if (visibleCount < steps.length + 1) {
-        timer = setTimeout(() => setVisibleCount((c) => c + 1), 450)
-      } else {
-        timer = setTimeout(() => {
-          setVisibleCount(1)
-          setCycle((n) => n + 1)
-        }, 1600)
-      }
-    }
-
-    advance()
-    return () => {
-      isMounted = false
-      if (timer) clearTimeout(timer)
-    }
-  }, [hasBegun, visibleCount, steps.length])
-
-  const showDone = visibleCount > steps.length
-
   return (
-    <div
-      ref={rootRef}
-      className="rounded-xl border border-white/10 bg-black/40 p-4 font-medium tracking-tight subpixel-antialiased text-sm leading-6 text-zinc-100 [font-variant-numeric:tabular-nums]"
-    >
-      {steps.slice(0, Math.min(visibleCount, steps.length)).map((text, index) => (
-        <Line key={`${cycle}-${index}`} className="fl-line-appear" style={{ animationDelay: `${index * 100}ms` }}>
-          {index === 0 ? (
-            <>
-              {text}
-              <span className="fl-progress-dots" aria-hidden="true" />
-            </>
-          ) : (
-            text
-          )}
+    <div className="rounded-xl border border-white/10 bg-black/40 p-4 font-medium tracking-tight subpixel-antialiased text-sm leading-6 text-zinc-100 [font-variant-numeric:tabular-nums]">
+      {steps.map((text, index) => (
+        <Line key={index}>
+          {text}
         </Line>
       ))}
-      {showDone && (
-        <Line className="fl-line-appear fl-success-glow text-emerald-300" style={{ animationDelay: `${steps.length * 100 + 200}ms` }}>
-          {"Done in 3m 12s. Ready to publish."}
-        </Line>
-      )}
+      <Line className="text-emerald-300">
+        {"Done in 3m 12s. Ready to publish."}
+      </Line>
     </div>
   )
 }
