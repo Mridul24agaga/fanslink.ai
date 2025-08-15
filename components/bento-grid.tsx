@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { Scissors, Sparkles, Gauge, UploadCloud, PlayCircle, Layers } from "lucide-react"
+import { Scissors, Sparkles, Gauge, UploadCloud, PlayCircle, Layers, Bot, Zap, Settings } from "lucide-react"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 import Spotlight from "@/components/spotlight"
@@ -84,7 +84,7 @@ export default function BentoShowcaseSection() {
                 </div>
                 <div className="relative overflow-hidden rounded-lg border border-white/10">
                   <Image
-                    src="/tikfusion-clips-timeline.png"
+                    src="/13.png"
                     alt="Clips timeline preview"
                     width={640}
                     height={420}
@@ -144,15 +144,11 @@ export default function BentoShowcaseSection() {
                 </div>
                 <p className="mt-2 text-sm text-zinc-300">Generate 100+ repurposed reels in one click</p>
               </div>
-              <div className="relative h-16 w-28 overflow-hidden rounded-md border border-white/10">
-                <Image
-                  src="/short-video-preview.png"
-                  alt="Clip preview"
-                  width={200}
-                  height={120}
-                  className="h-full w-full object-cover"
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+              <div className="flex h-16 w-28 items-center justify-center rounded-md border border-white/10 bg-white/5">
+                <div className="flex items-center gap-2 text-white/70">
+                  <Bot className="h-5 w-5" />
+                  <span className="text-xs font-medium">Auto</span>
+                </div>
               </div>
             </div>
           </BentoCard>

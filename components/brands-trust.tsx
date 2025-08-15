@@ -17,7 +17,7 @@ export default function BrandsTrustSection() {
             tag="[ PROVEN RESULTS ]"
             titlePrimary="Manual repurposing is"
             titleSecondary="over"
-            imgSrc="121.png"
+            imgSrc="124.png"
             imgAlt="Cube illustration"
           />
           <Card
@@ -31,7 +31,7 @@ export default function BrandsTrustSection() {
             tag="[ TAILORED FOR YOU ]"
             titlePrimary="High quality"
             titleSecondary="results"
-            imgSrc="https://framerusercontent.com/images/0inQJKilj8qkeUgN4bqX6KsU5rU.png?scale-down-to=512"
+            imgSrc="126.png"
             imgAlt="Chip illustration"
           />
           <Card
