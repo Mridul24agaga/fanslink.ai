@@ -14,7 +14,7 @@ export default function RepurposeBotSection() {
             {"Introducing"}
           </p>
           <h2 className="text-pretty text-3xl font-extrabold leading-tight sm:text-4xl md:text-5xl">
-            <span className="text-white">Meet Fanslink </span>
+            <span className="text-white">Meet the Fanslink </span>
             <span
               className="bg-clip-text text-transparent"
               style={{
@@ -41,7 +41,7 @@ export default function RepurposeBotSection() {
           <div className="mt-8 flex flex-row gap-3 items-center">
             <RainbowBorder>
               <PillButton size="lg" className="border-transparent flex-1 sm:flex-initial justify-center">
-                Launch the Bot
+                Launch Fanslink
               </PillButton>
             </RainbowBorder>
             <button className="rounded-full border border-white/15 px-4 py-3 text-sm sm:text-base text-white/90 hover:bg-white/10 flex-1 sm:flex-initial whitespace-nowrap">

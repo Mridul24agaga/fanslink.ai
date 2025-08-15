@@ -56,7 +56,7 @@ export default function PricingSection() {
         <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
           <PriceCard
             tone="subtle"
-            planLabel="Repurpose Bot"
+            planLabel="Fanslink Repurpose"
             monthlyPrice={149}
             yearlyPrice={1200}
             yearlyMonthlyPrice={99}
@@ -87,7 +87,7 @@ export default function PricingSection() {
             iconUrl={growthIcon}
             comingSoon
             features={[
-              "Everything in Repurpose Bot",
+              "Everything in Finished Repurpose",
               "7+ additional AI tools",
               "Team collaboration features",
               "Advanced analytics dashboard",

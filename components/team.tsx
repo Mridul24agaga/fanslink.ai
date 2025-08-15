@@ -28,16 +28,19 @@ export default function TeamSection() {
               name="Tom Morley"
               img="https://www.morleyconsultants.com/asdfghjk%202.png"
               linkedinUrl="https://www.linkedin.com/in/tom-morley-461032281/"
+              role="CMO"
             />
             <ProfileCard
               name="Finley Skynner"
               img="/fin.png"
               linkedinUrl="https://www.linkedin.com/in/finley-skynner"
+              role="CEO"
             />
             <ProfileCard
               name="Dominik Scheucher"
               img="https://ca.slack-edge.com/T0862A2SRPD-U0882H9UT38-345348665c74-512"
               linkedinUrl="https://www.linkedin.com/in/dominik-scheucher/"
+              role="CTO"
             />
 
           </div>
@@ -48,7 +51,7 @@ export default function TeamSection() {
   )
 }
 
-function ProfileCard({ name, img, linkedinUrl }: { name: string; img: string; linkedinUrl: string }) {
+function ProfileCard({ name, img, linkedinUrl, role }: { name: string; img: string; linkedinUrl: string; role: string }) {
   return (
     <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] w-full max-w-sm mx-auto">
       <div className="aspect-[3/4] w-full overflow-hidden">
@@ -70,6 +73,7 @@ function ProfileCard({ name, img, linkedinUrl }: { name: string; img: string; li
       {/* Text overlays */}
       <div className="absolute inset-x-0 bottom-0 p-5">
         <h3 className="text-lg font-semibold tracking-tight text-white drop-shadow-sm">{name}</h3>
+        <p className="text-sm text-white/70 font-medium">{role}</p>
         <div className="mt-3 flex items-center gap-2 opacity-0 transition-all duration-400 ease-out group-hover:translate-y-0 group-hover:opacity-100 translate-y-1">
           <a
             href={linkedinUrl}
