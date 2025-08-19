@@ -24,9 +24,11 @@ export default function CtaBandSection() {
 
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <RainbowBorder>
-              <PillButton size="lg" className="border-transparent">
-                Get Fanslink Now  
-              </PillButton>
+              <a href="#introducing">
+                <PillButton size="lg" className="border-transparent">
+                  Get Fanslink Now  
+                </PillButton>
+              </a>
             </RainbowBorder>
 
             <a

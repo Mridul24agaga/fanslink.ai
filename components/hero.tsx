@@ -45,13 +45,15 @@ export default function Hero() {
           {/* CTAs */}
           <div className="mt-6 sm:mt-8 flex flex-row items-center justify-center gap-2 sm:gap-3 px-2 sm:px-0">
             <RainbowBorder>
-              <PillButton size="lg" className="border-transparent group whitespace-nowrap flex-1 sm:flex-initial text-base sm:text-base px-6 sm:px-6 py-4 sm:py-3.5 min-h-[52px] sm:min-h-[44px]">
-                <span className="inline-flex items-center justify-center">
-                  <span className="hidden sm:inline">Get Fanslink Now</span>
-                  <span className="sm:hidden">Get Started</span>
-                  <ArrowRight className="ml-1 sm:ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                </span>
-              </PillButton>
+              <a href="#introducing">
+                <PillButton size="lg" className="border-transparent group whitespace-nowrap flex-1 sm:flex-initial text-base sm:text-base px-6 sm:px-6 py-4 sm:py-3.5 min-h-[52px] sm:min-h-[44px]">
+                  <span className="inline-flex items-center justify-center">
+                    <span className="hidden sm:inline">Get Fanslink Now</span>
+                    <span className="sm:hidden">Get Started</span>
+                    <ArrowRight className="ml-1 sm:ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                </PillButton>
+              </a>
             </RainbowBorder>
 
             <a href="#introducing" className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 sm:px-7 py-4 sm:py-3.5 text-base sm:text-base text-white/90 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40 whitespace-nowrap flex-1 sm:flex-initial min-h-[52px] sm:min-h-[44px]">

@@ -62,7 +62,7 @@ export default function SiteHeader() {
           {/* Desktop CTA */}
           <div className="hidden items-center gap-3 md:flex">
             <RainbowBorder>
-              <Link href="#pricing">
+              <Link href="#introducing">
                 <PillButton size="sm" className="border-transparent group whitespace-nowrap">
                   <span className="inline-flex items-center">
                     Get Fanslink Now
@@ -116,7 +116,7 @@ export default function SiteHeader() {
                   {/* CTA Section */}
                   <div className="p-6 pt-4 border-t border-white/10">
                     <RainbowBorder>
-                      <Link href="#pricing">
+                      <Link href="#introducing">
                         <PillButton size="lg" className="border-transparent group whitespace-nowrap w-full justify-center">
                           <span className="inline-flex items-center">
                             Get Fanslink Now
