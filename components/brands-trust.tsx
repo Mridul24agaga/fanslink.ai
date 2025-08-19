@@ -15,30 +15,30 @@ export default function BrandsTrustSection() {
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <Card
             tag="[ PROVEN RESULTS ]"
-            titlePrimary="Manual repurposing is"
+            titlePrimary="Manual Content repurposing is"
             titleSecondary="over"
-            imgSrc="124.png"
+            imgSrc="1221.png"
             imgAlt="Cube illustration"
           />
           <Card
-            tag="[ SEAMLESS AI INTEGRATION ]"
-            titlePrimary="73+ hours saved"
+            tag="[ AGENCY TIME SAVER ]"
+            titlePrimary="Agency Owner Saves 73 Hours"
             titleSecondary="per week"
-            imgSrc="122.png"
+            imgSrc="1223.png"
             imgAlt="Puzzle illustration"
           />
           <Card
             tag="[ TAILORED FOR YOU ]"
-            titlePrimary="High quality"
-            titleSecondary="results"
-            imgSrc="126.png"
+            titlePrimary="Highest quality Content"
+            titleSecondary="Repurposing  Available"
+            imgSrc="1222.png"
             imgAlt="Chip illustration"
           />
           <Card
             tag="[ ONGOING SUPPORT ]"
-            titlePrimary="High rated"
+            titlePrimary="Highest rated"
             titleSecondary="support team"
-            imgSrc="https://framerusercontent.com/images/dIX4pjdxAyXF48AZQtOmL0xk.png?scale-down-to=512"
+            imgSrc="1224.png"
             imgAlt="Chat bubble illustration"
           />
         </div>

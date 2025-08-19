@@ -56,14 +56,14 @@ export default function PricingSection() {
         <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
           <PriceCard
             tone="subtle"
-            planLabel="Fanslink Repurpose"
+            planLabel="Fanslink Repurpose Platform"
             monthlyPrice={149}
             yearlyPrice={1200}
             yearlyMonthlyPrice={99}
             billing={billing}
             subtitleTop="Perfect for"
             subtitleBottom="All agencies and creators"
-            ctaLabel="Choose Fanslink Repurpose"
+            ctaLabel="Choose Fanslink Repurpose Platform"
             iconUrl={basicIcon}
             features={[
               "Perfect for all agencies",
@@ -152,7 +152,7 @@ function PriceCard({
       <div
         className={[
           "relative overflow-hidden rounded-[calc(1.5rem-1px)] p-6 md:p-10 h-full",
-          tone === "subtle" ? "bg-[#080B20]" : "bg-white/[0.03]",
+          tone === "subtle" ? "bg-[#080B20]" : comingSoon ? "bg-black/60" : "bg-white/[0.03]",
           isHighlight ? "border border-white/10 shadow-[0_0_0_1px_rgba(255,255,255,0.10),0_40px_80px_-20px_rgba(123,97,255,0.35)]" : "",
         ].join(" ")}
       >
@@ -160,18 +160,17 @@ function PriceCard({
       <img
         src={iconUrl}
         alt="decorative"
-        className="pointer-events-none absolute right-4 top-4 h-10 w-auto object-contain opacity-90 sm:h-12 z-10"
+        className={["pointer-events-none absolute right-4 top-4 h-10 w-auto object-contain sm:h-12 z-10", comingSoon ? "opacity-40" : "opacity-90"].join(" ")}
         loading="lazy"
       />
 
       {/* plan label */}
-      <div className="text-sm font-semibold text-zinc-300">{planLabel}</div>
+      <div className={["text-sm font-semibold", comingSoon ? "text-zinc-500" : "text-zinc-300"].join(" ")}>{planLabel}</div>
 
       {/* price or coming soon */}
       {comingSoon ? (
         <div className="mt-3 flex items-end gap-2">
-          <div className="text-4xl font-extrabold sm:text-5xl md:text-6xl">$$</div>
-          <div className="mb-2 text-xs uppercase tracking-wide text-zinc-400">Price TBD</div>
+          <div className="text-2xl font-semibold text-zinc-500">Coming Soon</div>
         </div>
       ) : (
         <div className="mt-3 flex items-end gap-2">
@@ -181,8 +180,12 @@ function PriceCard({
       )}
 
       {/* subtitle */}
-      <p className="mt-4 text-sm text-zinc-400">{subtitleTop}</p>
-      <p className="text-base font-medium text-zinc-200">{subtitleBottom}</p>
+      {!comingSoon && (
+        <>
+          <p className="mt-4 text-sm text-zinc-400">{subtitleTop}</p>
+          <p className="text-base font-medium text-zinc-200">{subtitleBottom}</p>
+        </>
+      )}
 
       {/* CTA */}
       <div className="mt-6">
@@ -213,11 +216,11 @@ function PriceCard({
       {/* features */}
       <ul className="mt-6 space-y-3 text-sm">
         {features.map((feature, idx) => (
-          <li key={idx} className="flex items-start gap-3 text-zinc-300">
-            <span className="mt-0.5 inline-flex items-center justify-center rounded-full bg-white/10 p-1 ring-1 ring-white/15">
-              <Check className="h-4 w-4 text-indigo-300" />
+          <li key={idx} className="flex items-start gap-3">
+            <span className={["mt-0.5 inline-flex items-center justify-center rounded-full p-1 ring-1", comingSoon ? "bg-zinc-700/50 ring-zinc-600/50" : "bg-white/10 ring-white/15"].join(" ")}>
+              <Check className={["h-4 w-4", comingSoon ? "text-zinc-500" : "text-indigo-300"].join(" ")} />
             </span>
-            <span>{feature}</span>
+            <span className={comingSoon ? "text-zinc-500" : "text-zinc-300"}>{feature}</span>
           </li>
         ))}
       </ul>

@@ -16,10 +16,7 @@ export default function TeamSection() {
                 <span className="heading-accent">{"Founders"}</span>
               </h2>
             </div>
-            <p className="max-w-xl text-sm text-zinc-400">
-              Our AI‑driven automation removes busywork, streamlines your operation, and helps your business grow—without
-              extra effort.
-            </p>
+           
           </div>
 
           {/* Grid */}

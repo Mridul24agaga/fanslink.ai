@@ -104,16 +104,61 @@ export default function BentoShowcaseSection() {
           <BentoCard className="md:col-span-2 md:row-span-2" variant="gradient">
             <div className="flex h-full flex-col justify-between">
               <div className="flex items-center gap-2">
-                <Badge icon={<Gauge className="h-4 w-4" />}>Speed</Badge>
+                <Badge icon={<UploadCloud className="h-4 w-4" />}>Presets</Badge>
               </div>
               <div className="mt-2">
-                <div className="text-5xl font-extrabold leading-none">5 sec</div>
-                <p className="mt-2 text-sm text-zinc-400">Average processing time</p>
+                <p className="text-sm text-zinc-400">Ready presets for all social media platforms</p>
               </div>
-              <div className="mt-6 grid grid-cols-3 gap-2 text-center">
-                <MiniStat label="Accuracy" value="99.9%" />
-                <MiniStat label="Videos/min" value="12+" />
-                <MiniStat label="Time saved" value="95%" />
+              
+              {/* Platform icons with labels */}
+              <div className="mt-4 flex items-center justify-center gap-3">
+                <div className="flex flex-col items-center gap-1">
+                  <PlatformDot icon={<InstagramIcon />} />
+                  <span className="text-xs text-zinc-400">IG</span>
+                </div>
+                <div className="flex flex-col items-center gap-1">
+                  <PlatformDot icon={<YouTubeIcon />} />
+                  <span className="text-xs text-zinc-400">YT</span>
+                </div>
+                <div className="flex flex-col items-center gap-1">
+                  <PlatformDot icon={<TikTokIcon />} />
+                  <span className="text-xs text-zinc-400">TT</span>
+                </div>
+              </div>
+
+              {/* Additional preset info */}
+              <div className="mt-4 space-y-2">
+                <div className="flex items-center gap-2 text-xs text-zinc-400">
+                  <div className="h-1.5 w-1.5 rounded-full bg-emerald-400"></div>
+                  <span>Pre-built templates</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs text-zinc-400">
+                  <div className="h-1.5 w-1.5 rounded-full bg-blue-400"></div>
+                  <span>Platform-specific styles</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs text-zinc-400">
+                  <div className="h-1.5 w-1.5 rounded-full bg-purple-400"></div>
+                  <span>Custom preset library</span>
+                </div>
+              </div>
+
+              {/* Preset stats */}
+              <div className="mt-4 grid grid-cols-2 gap-3">
+                <div className="text-center">
+                  <div className="text-lg font-bold text-white">50+</div>
+                  <div className="text-xs text-zinc-400">Ready presets</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-lg font-bold text-white">3</div>
+                  <div className="text-xs text-zinc-400">Platforms</div>
+                </div>
+              </div>
+
+              {/* Quick action */}
+              <div className="mt-4 flex items-center justify-center">
+                <div className="rounded-full bg-emerald-500/20 px-3 py-1 text-xs text-emerald-300 border border-emerald-500/30">
+                  Ready to use
+                </div>
               </div>
             </div>
           </BentoCard>
@@ -158,14 +203,17 @@ export default function BentoShowcaseSection() {
             <div className="flex h-full items-center justify-between gap-3">
               <div>
                 <div className="flex items-center gap-2">
-                  <Badge icon={<UploadCloud className="h-4 w-4" />}>Presets</Badge>
+                  <Badge icon={<Gauge className="h-4 w-4" />}>Speed</Badge>
                 </div>
-                <p className="mt-2 text-sm text-zinc-300">Bespoke presets for Instagram, Shorts and more</p>
+                <p className="mt-2 text-sm text-zinc-300">Average processing time</p>
               </div>
-              <div className="flex items-center gap-2">
-                <PlatformDot icon={<InstagramIcon />} />
-                <PlatformDot icon={<YouTubeIcon />} />
-                <PlatformDot icon={<TikTokIcon />} />
+              <div className="text-center">
+                <div className="text-3xl font-extrabold leading-none">5 sec</div>
+                <div className="mt-1 grid grid-cols-3 gap-1 text-xs">
+                  <div className="text-zinc-400">99.9%</div>
+                  <div className="text-zinc-400">12+</div>
+                  <div className="text-zinc-400">95%</div>
+                </div>
               </div>
             </div>
           </BentoCard>
